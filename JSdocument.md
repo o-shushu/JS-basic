@@ -388,8 +388,237 @@
 </script>
 ```
 
-### 四.JS运算符p41
+### 四.JS运算符
+* 算术运算符
+    * 加减乘除，取余
+    * 浮点数精度问题
+    * 如何判断一个数能够被整除
+    * 表达式由（）（）（）等组成的式子
+* 递增/递减运算符
+    * 前置递增
+    * 后置递增
+    * 练习
+* 比较运算符
+    * (<,>,>=,<=,==,!=,===)
+* 逻辑运算符
+    * 短路运算（逻辑中断）之与
+    * 短路运算（逻辑中断）之或
+* 赋值运算符
+* 优先级运算符
+#### 算术运算符
+* 加减乘除，取余
+* 浮点数精度问题
+```html
+<script>
+    console.log(1 + 1);
+    console.log(1 - 1);
+    console.log(1 * 1);
+    console.log(1 / 1);
+    //取余（取模）
+    console.log(4 % 2);
+    console.log(3 % 5);
+    //浮点数的算数运算时会有精度问题,不能直接拿浮点数进行比较
+    var result = 0.1 + 0.2;
+    console.log(result);//结果不等于0.3
+</script>
+```
+* 如何判断一个数能够被整除:余数为0就能被整除
+```html
+<script>
+    console.log(4 % 2);
+</script>
+```
+* 表达式由（数字）（运算符）（变量）等组成的式子.表达式最终会返回一个结果（返回值）
+#### 递增/递减运算符
+前置递增and后置递增:两者单独使用一样,和其他代码联用时，执行结果不同
+ * 前置递增:先自加，后返回值 ++age
+```html
+<script>
+    var num = 10;
+    console.log(++num + 10);//21; num = num + 1, num = 11, ++num = 11
+</script>
+```
+* 后置递增:先表达式返回原值，后num这个变量自加1 num++
+```html
+<script>
+    var num = 10;
+    console.log(10 + num++);//20; num++ = 10, num = 11
+</script>
+```
+* 练习
+```html
+<script>
+    var a = 10;
+    ++a;
+    var b = ++a + 2;
+    console.log(b);//14
 
+    var c = 10;
+    c++;
+    var d = c++ + 2;
+    console.log(d);//13
 
+    var e = 10;
+    var f = e++ + ++e;//e++ = 10 e = 11; ++e = 12
+    console.log(f);//22
+</script>
+```
+#### 比较运算符
+* (<,>,>=,<=,==[判断号],!=,===[全等号])
+比较后，返回布尔值
+```html
+<script>
+    console.log(18 == '18');//true
+    console.log(18 != 18);//false
+    //全等于===，值及数据类型都一致
+    console.log(18 === '18');//false
 
+    var num1 = 10;
+    var num2 = 100;
+    var rea1 = num1 > num2;
+    var rea2 = num1 == 11;
+    var rea3 = num1 != num2;
+    console.log(rea1);//false
+    console.log(rea2);//false
+    console.log(rea3);//true
+</script>
+```
+#### 逻辑运算符
+多个条件判断，进行布尔值运算的运算，返回值为布尔值
+* &&  逻辑与
+* ||  逻辑或
+* !   逻辑非
+```html
+<script>
+    console.log(3 > 5 && 3 > 2);//false
+    console.log(3 > 5 || 3 > 2);//true
+    console.log(!true);//false
+    //practice
+    var num = 7;
+    var str = "peace and love";
+    console.log(str.length);//12 长度为14，空格也算
+    console.log(num > 5 && str.length >= num);//true
+    console.log(num < 5 && str.length >= num);//false
+    console.log(!(num < 10));//false
+    console.log(!(num < 10 || str.length == num));//false
+</script>
+```
+* 短路运算（逻辑中断）之与
+如果第一个表达式1为真，则返回表达式2
+如果第一个表达式1为假，则返回表达式1
+```html
+<script>
+    console.log(123 && 456);//456
+    console.log(0 && 456);//0
+    console.log(0 && 1 + 2 && 456 * 56789);//0
+    //如果有空的或者否定的则为假，其余为真
+    //0 '' null undefined NaN
+    console.log(null && 456);//null
+    console.log('' && 456);//
+    console.log(undefined && 456);//undefined
+    console.log(NaN && 456);//NaN
+</script>
+```
+* 短路运算（逻辑中断）之或
+如果第一个表达式1为真，则返回表达式1
+如果第一个表达式1为假，则返回表达式2
+```html
+<script>
+    console.log(123 || 456);//123
+    console.log(0 || 456 || 456 + 123);//456
 
+    var num = 0;
+    console.log(123 || num++);
+    console.log(num);//0
+</script>
+```
+#### 赋值运算符
+右边值给左边
+```html
+<script>
+    var num = 10;
+    num += 2;
+    console.log(num);//12
+    num += 5;
+    console.log(num);//17
+    num -= 2;
+    console.log(num);//15
+</script>
+```
+#### 优先级运算符
+优先级从高到低排列
+* ()
+* [++,--,!] 有一个变量操作运算的为一元运算符
+* [*/%+-]
+* [>, >=, <, <=]
+* [==, !=, ===, !==]
+* [&&, ||]
+* [=]
+* [,]
+
+### 四.JS流程控制
+* 流程控制
+    * 顺序结构
+    * 分支结构
+        * if语句
+        * if else语句
+        * 判断闰年
+        * 判断是否中将
+        * switch语句
+    * 循环结构
+* 三元表达式
+#### 流程控制
+有（3）种结构，分别是（顺序）结构，（分支）结构，（循环）结构。
+* 顺序结构
+* 分支结构(根据条件选择，多选一)
+    * if语句
+    ```html
+    <script>
+        // 条件成立执行代码，否则什么也不做
+        if ( 条件表达式 ) {
+        // 条件成立执行的代码语句
+        }
+    </script>
+    ```
+
+    * if else语句
+    ```html
+        <script>
+            // 条件成立 执行 if 里面代码，否则执行 else 里面的代码
+            if ( 条件表达式 ) {
+            // [ 如果 ] 条件成立执行的代码
+            } else {
+            // [ 否则 ] 执行的代码
+            }
+        </script>
+    ```
+    * 判断闰年
+    ```html
+    <script>
+        var year = prompt("请输入年份：");
+        if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            alert(year + "是闰年");
+            console.log(year % 2);
+        }else {
+            alert(year + "是平年");
+            console.log(year % 2);
+        }
+    </script>
+    ```
+    * 判断是否中将
+    ```html
+    <script>
+        var username = prompt("请输入您的姓名：");
+        if(username == "刘德华") {
+            alert("恭喜中了5元!");
+        } else {
+            alert("非常遗憾，您没有中奖!");
+        }
+    </script>
+    ```
+循环
+
+顺序流程控制
+分支流程控制if语句
+
+分支流程控制switch语句
