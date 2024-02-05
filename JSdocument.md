@@ -556,7 +556,7 @@
 * [=]
 * [,]
 
-### 四.JS流程控制
+### 五.JS流程控制
 * 流程控制
     * 顺序结构
     * 分支结构
@@ -564,9 +564,26 @@
         * if else语句
         * 判断闰年
         * 判断是否中将
+        * if else if语句
+        * 判断成绩
         * switch语句
+        * 查询水果（案例）
+        * switch语句和if else if语句的区别
+            * 案例练习（见PPT）
     * 循环结构
+        * 循环的目的
+        * for循环（可以重复执行相同代码和不同代码）
+        * 断点调试观察代码
+        * 累加求和案例
+        * 求1~100间（平均值，偶数和奇数的和，能被3整除数字的和）
+        * 双重for循环+乘法表案例
+        * while循环和do while循环
+        * break和continue区别
 * 三元表达式
+    * 语法结构
+    * 数字补0（案例）
+        * 用户输入数字，如果数字小于 10 ，则在前面补 0 ，比如 01 ， 09 ，如果数字大于 10 ，则不需要补，比如
+20 。
 #### 流程控制
 有（3）种结构，分别是（顺序）结构，（分支）结构，（循环）结构。
 * 顺序结构
@@ -580,7 +597,6 @@
         }
     </script>
     ```
-
     * if else语句
     ```html
         <script>
@@ -605,7 +621,7 @@
         }
     </script>
     ```
-    * 判断是否中将
+    * 判断是否中奖
     ```html
     <script>
         var username = prompt("请输入您的姓名：");
@@ -616,7 +632,134 @@
         }
     </script>
     ```
-循环
+    * if else if语句
+    ```html
+    <script>
+        if (条件表达式1) {
+            // 条件成立执行的代码语句
+        } else if (条件表达式2) {
+            // 条件成立执行的代码语句
+        } else if (条件表达式3) {
+            // 条件成立执行的代码语句
+        } else {
+            // 条件成立执行的代码语句
+        }
+    </script>
+    ```
+    * 判断成绩
+    ```html
+    <script>
+         if (score >= 90) {
+            alert("A");
+        } else if (score >= 80) {
+            alert("B");
+        } else if (score >= 70) {
+            alert("C");
+        } else if (score >= 60) {
+            alert("D");
+        } else {
+            alert("E");
+        }
+    </script>
+    ```
+    * switch语句
+        * 表达式返回的值是否有满足case中的value，有就执行相应语句，都没有就执行default下的语句。
+        * 注：表达式返回的值和case的值必须全等（值和数据类型一致）
+    ```html
+    <script>
+      switch(表达式) {
+        case value1:
+            执行的代码语句;
+            break;//break表退出，若没有就会继续执行下一个case
+        case value2:
+            执行的代码语句;
+            break;
+        ...
+        default:
+            执行最后的语句;   
+
+      }  
+    </script>
+    ```
+    * 查询水果（案例）
+     ```html
+    <script>
+      var input = prompt("请输入要查询的水果：");
+        switch(input) {
+            case "苹果":
+                alert("2.5元/斤");
+                break;
+            case "草莓":
+                alert("25元/斤");
+                break;
+            case "香蕉":
+                alert("3元/斤");
+                break;
+            default:
+                alert("没有此水果");
+        }
+    </script>
+    ```
+    * switch语句和if else if语句的区别
+        * 一般情况下可以互相替换
+        * switch语句处理固定值，if else if语句用于范围判断
+        * 分支较多时，switch语句效率高；分支较少时，if...else语句效率较高
+* 循环结构
+   * 循环的目的：可以重复执行某些代码/语句
+   * for循环
+        * 循环体：被重复执行的语句
+        * 终止条件：能否继续重复执行的条件
+        * 初始化变量: 声明的一个普通变量，作为计数器使用
+        * 条件表达式（终止条件）:判断循环是否继续执行
+        * 操作表达式:每次循环最后执行的代码，用于计数器的更新
+        ```html
+            <script>
+                for (初始化变量;条件表达式;操作表达式) {
+                    //循环体
+                }
+
+            //如：
+            for (var i = 1; i <= 100; i++) {
+                console.log("How are you?");
+            }
+            </script>
+        ```
+   * 断点调试观察代码
+        * 目的：观察程序的运行过程
+        * 流程：F12->Sources(Page)->指定要调试的行号，再刷新页面（浅蓝色背景在哪里就到哪一步）->F11（watch用于监视变量的值的变化）
+   * 累加求和案例
+   ```html
+    <script>
+        for (var i = 1, sum = 0; i <= 100; i++) {
+            sum = sum + i;//sum += i
+        }
+        console.log(sum);
+    </script>
+   ```
+   * 求1~100间（平均值，偶数和奇数的和，能被3整除数字的和）
+   ```html
+    <script>
+
+    </script>
+   ```
+#### 三元表达式
+* 语法结构
+    条件表达式 ? 表达式1 : 表达式2
+```html
+<script>
+    var num = 8;
+    var result = num > 5 ? "true" : "false"; 
+    console.log(result);
+</script>
+```
+* 数字补0（案例）
+```html
+<script>
+    var num = prompt("请输入数字：");
+    var result = num < 10 ? "0" + num : num;
+    console.log(result);
+</script>
+```
 
 顺序流程控制
 分支流程控制if语句
