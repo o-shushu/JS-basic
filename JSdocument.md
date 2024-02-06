@@ -576,9 +576,12 @@
         * 断点调试观察代码
         * 累加求和案例
         * 求1~100间（平均值，偶数和奇数的和，能被3整除数字的和）
-        * 双重for循环+乘法表案例
+        * 求学生成绩案例
+        * 一行打印5颗星星案例
+        * 双重for循环+案例
         * while循环和do while循环
         * break和continue区别
+        * 循环作业（题目见PPT）
 * 三元表达式
     * 语法结构
     * 数字补0（案例）
@@ -739,29 +742,228 @@
    * 求1~100间（平均值，偶数和奇数的和，能被3整除数字的和）
    ```html
     <script>
+        var sum = 0;
+        var average = 0;
+        for (var i = 1; i <= 100; i++) {
+            sum = sum + i;
+        }
+        average = sum / 100;
+        console.log(average);
 
+        var even = 0;
+        var odd = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                even = even + i;
+            } else {
+                odd = odd + i;
+            }
+        }
+        console.log(even);
+        console.log(odd);
+
+        var three = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 3 == 0){
+                three = three + i;
+            }
+        }
+        console.log(three);
     </script>
    ```
+   * 求学生成绩案例
+   ```html
+    <script>
+        var total = 0;
+        var score;
+        var num = prompt("请输入学生人数：");
+        for (var i = 1; i <= num; i++) {
+        score = prompt("请输入学生" + i + "的成绩：");
+        total = total + Number(score);
+        }
+        average = total / Number(num);
+        alert("学生的平均成绩：" + average);
+    </script>
+   ```
+   * 一行打印5颗星星案例
+   ```html
+    <script>
+        var total = "";
+        for (var i = 1; i <= 5; i++) {
+            star = '*';
+            var total = total + star;
+        }
+        console.log(total);
+    </script>
+   ```
+   * 双重for循环+乘法表案例
+        * 语法结构:外层执行1次，里层的循环要全部执行
+        ```html
+        <script>
+            for (外层的初始化变量；外层的条件表达式；外层的操作表达式) {
+                for (里层的初始化变量；里层的条件表达式；里层的操作表达式) {
+                    //执行语句
+                }
+            }
+        </script>
+        ```
+        * 案例
+        ```html
+        <script>
+        //打印5行5列星星案例
+            var stars = '';   
+            for (var i = 1; i <= 5; i++) {
+                for (var j = 1; j <= 5; j++) {
+                    stars = stars + '*';
+                }
+                stars = stars + '\n';
+            }
+            console.log(stars);
+        //自定义行列星星案例
+            var stars = '';
+            var rows = prompt('请输入行数：');
+            var columns = prompt('请输入列数：');
+
+            for (var i = 1; i <= rows; i++) {
+                for (var j = 1; j <= columns; j++) {
+                    stars = stars + '*';
+                }
+                stars = stars + '\n';
+            }
+            console.log(stars);
+        //打印倒三角案例n行
+            var stars = '';
+            var num = prompt('请输入行数：');
+            for (var i = 1; i <= num; i++) {
+                for (var j = 1; j <= num - i + 1; j++) {
+                    stars = stars + '*';
+                }
+                // for (var j = i; j <= num; j++) {
+                //     stars = stars + '*';
+                // }
+                stars = stars + '\n';
+            }
+            console.log(stars);
+        //打印正三角案例n行
+            var stars = '';
+            var num = prompt('请输入行数：');
+            for (var i = 1; i <= num; i++) {
+                for (var j = 1; j <= i; j++) {
+                    stars = stars +'*';
+                }
+                stars = stars + '\n';
+            }
+            console.log(stars);
+        //九九乘法表案例
+            var cows = prompt('请输入行数：');
+            var results = '';
+            for (var i = 1; i <= cows; i++) {
+                for (var j = 1; j <= i; j++) {
+                    var product = j * i;
+                    var results = results + '\t' + j + 'x' + i + '=' + product;
+                }
+                results += '\n';
+            }
+            console.log(results);
+        </script>
+        ```
+   * while循环和do while循环
+        * while循环:条件表达式为真时，执行循环体;可以用于更复杂的循环
+        ```html
+        <script>
+            while (条件表达式) {
+                //循环体
+            }
+        //案例1
+            var i = 1;
+            var sum = 0;
+            while (i <= 100) {
+                sum = sum + i;
+                i++
+            }
+            console.log(sum);
+        //案例2
+        var message = prompt('今天谁请客呀？');
+        while (message != '我请客')  {
+            message = prompt('今天谁请客呀？');
+        }
+        alert('多谢款待');
+        </script>
+        ```
+        * do while循环:先执行循环体，再判断，符合条件就退出
+        ```html
+        <script>
+            do {
+                //循环体
+            } while (条件表达式)
+        </script>
+        ```
+        * 案例
+        ```html
+        <script>
+            var age = 1;
+            do {
+                console.log('我今年'+ age +'岁了!');
+                age++;
+            } while (age <= 100)
+        </script>
+         ```
+   * break和continue区别
+        * continue:只是跳出本次循环，继续下一次循环
+        ```html
+        <script>
+            for (var i = 1; i <= 5; i++) {
+                if (i == 3) {
+                    continue;
+                }
+                console.log('我正在吃第'+ i +'个面包');
+            }
+
+            var sum = 0;
+            for (var i = 1; i <= 100; i++) {
+                if (i % 7 == 0) {
+                    continue;
+                }
+                sum += i;
+            }
+            console.log(sum);
+        </script>
+        ```
+        * break:结束整个循环,后面的不再执行
+        ```html
+        <script>
+            for (var i = 1; i <= 5; i++) {
+                if (i == 3) {
+                    break;
+                }
+                console.log('我正在吃第'+ i +'个面包');
+            }
+        </script>
+        ```
+   * 循环作业（题目见PPT）
 #### 三元表达式
 * 语法结构
     条件表达式 ? 表达式1 : 表达式2
-```html
-<script>
-    var num = 8;
-    var result = num > 5 ? "true" : "false"; 
-    console.log(result);
-</script>
-```
+    ```html
+    <script>
+        var num = 8;
+        var result = num > 5 ? "true" : "false"; 
+        console.log(result);
+    </script>
+    ```
 * 数字补0（案例）
-```html
-<script>
-    var num = prompt("请输入数字：");
-    var result = num < 10 ? "0" + num : num;
-    console.log(result);
-</script>
-```
+    ```html
+    <script>
+        var num = prompt("请输入数字：");
+        var result = num < 10 ? "0" + num : num;
+        console.log(result);
+    </script>
+    ```
 
-顺序流程控制
-分支流程控制if语句
-
-分支流程控制switch语句
+### 六.数组
+* 为什么要有数组
+* 创建数组
+* 获取数组中的元素
+* 对数组进行遍历
+* 给数组新增元素
+* 冒泡排序案例

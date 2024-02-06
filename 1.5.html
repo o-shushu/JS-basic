@@ -83,7 +83,148 @@
     }
     console.log(sum); */
 //求1~100间（平均值，偶数和奇数的和，能被3整除数字的和）
+    /*var sum = 0;
+    var average = 0;
+    for (var i = 1; i <= 100; i++) {
+        sum = sum + i;
+    }
+    average = sum / 100;
+    console.log(average);
 
+    var even = 0;
+    var odd = 0;
+    for (var i = 1; i <= 100; i++) {
+        if (i % 2 == 0) {
+            even = even + i;
+        } else {
+            odd = odd + i;
+        }
+    }
+    console.log(even);
+    console.log(odd);
+
+    var three = 0;
+    for (var i = 1; i <= 100; i++) {
+        if (i % 3 == 0){
+            three = three + i;
+        }
+    }
+    console.log(three); */
+//求学生成绩案例
+    /* var total = 0;
+    var score;
+    var num = prompt("请输入学生人数：");
+    for (var i = 1; i <= num; i++) {
+        score = prompt("请输入学生" + i + "的成绩：");
+        total = total + Number(score);
+    }
+    average = total / Number(num);
+    alert("学生的平均成绩：" + average); */
+//一行打印5颗星星案例    
+    /* var total = "";
+    for (var i = 1; i <= 5; i++) {
+        star = '*';
+        var total = total + star;
+    }
+    console.log(total); */
+//打印5行5列星星案例
+    /* var stars = '';   
+    for (var i = 1; i <= 5; i++) {
+        for (var j = 1; j <= 5; j++) {
+            stars = stars + '*';
+        }
+        stars = stars + '\n';
+    }
+    console.log(stars); */
+//自定义行列星星案例
+    /* var stars = '';
+    var rows = prompt('请输入行数：');
+    var columns = prompt('请输入列数：');
+
+    for (var i = 1; i <= rows; i++) {
+        for (var j = 1; j <= columns; j++) {
+            stars = stars + '*';
+        }
+        stars = stars + '\n';
+    }
+    console.log(stars); */
+//打印倒三角案例n行
+    /* var stars = '';
+    var num = prompt('请输入行数：');
+    for (var i = 1; i <= num; i++) {
+        for (var j = 1; j <= num - i + 1; j++) {
+            stars = stars + '*';
+        }
+        // for (var j = i; j <= num; j++) {
+        //     stars = stars + '*';
+        // }
+        stars = stars + '\n';
+    }
+    console.log(stars); */
+//打印正三角案例n行
+    /* var stars = '';
+    var num = prompt('请输入行数：');
+    for (var i = 1; i <= num; i++) {
+        for (var j = 1; j <= i; j++) {
+            stars = stars +'*';
+        }
+        stars = stars + '\n';
+    }
+    console.log(stars); */
+//九九乘法表案例
+    /* var cows = prompt('请输入行数：');
+    var results = '';
+    for (var i = 1; i <= cows; i++) {
+        for (var j = 1; j <= i; j++) {
+            var product = j * i;
+            var results = results + '\t' + j + 'x' + i + '=' + product;
+        }
+        results += '\n';
+    }
+    console.log(results); */
+
+//while循环
+    /* var i = 1;
+    var sum = 0;
+    while (i <= 100) {
+        sum = sum + i;
+        i++
+    }
+    console.log(sum); */
+
+   /*  var message = prompt('今天谁请客呀？');
+    while (message != '我请客')  {
+        message = prompt('今天谁请客呀？');
+    }
+    alert('多谢款待'); */
+//do while循环
+    /* var age = 1;
+    do {
+        console.log('我今年'+ age +'岁了!');
+        age++;
+    } while (age <= 100) */
+//break和continue区别
+    /* for (var i = 1; i <= 5; i++) {
+        if (i == 3) {
+            continue;
+        }
+        console.log('我正在吃第'+ i +'个面包');
+    } */
+    /* var sum = 0;
+    for (var i = 1; i <= 100; i++) {
+        if (i % 7 == 0) {
+            continue;
+        }
+        sum += i;
+    }
+    console.log(sum); */
+
+    for (var i = 1; i <= 5; i++) {
+        if (i == 3) {
+            break;
+        }
+        console.log('我正在吃第'+ i +'个面包');
+    }
     </script>
 </body>
 </html>
