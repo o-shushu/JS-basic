@@ -963,7 +963,140 @@
 ### 六.数组
 * 为什么要有数组
 * 创建数组
+    * 创建方式
 * 获取数组中的元素
+    * 数组的索引
+    * 访问元素的格式
 * 对数组进行遍历
+    * 遍历数据
+    * 数组的长度
+    * 求数组元素的和及平均值
+    * 求数组最大值/最小值
+    * 数组转化为分割字符串
 * 给数组新增元素
+    * 新增元素方法(修改长度length;修改索引号)
+    * 新建一个数组里面存放1~10的元素
 * 冒泡排序案例
+#### 为什么要有数组
+* 数组：一组数据的集合,可放任意数据类型，用逗号分隔，里面的数据称为数组元素
+* 作用：将一组数用一个变量表示
+#### 创建数组
+* 创建方式
+    * （1）利用new
+    ```html
+    <script>
+        var arr = new Array();
+    </script>
+    ```
+    * （2）数组字面量
+    ```html
+    <script>
+        var arr = [1, 2, 3, 4]
+    </script>
+    ```
+#### 获取数组中的元素
+* 数组的索引：数组元素的序号
+* 访问元素的格式：数组名[索引号],索引号从0开始
+    ```html
+    <script>
+        var arr = [1, 2, 3, 4]
+        console.log(arr[1]);
+    </script>
+    ```
+#### 对数组进行遍历
+* 遍历数据：将数组中的每个元素从头到尾都访问一遍
+    ```html
+    <script>
+        var arr = ["red", "blue", "green", "black"]
+        for (var i = 0; i < 4; i++) {
+            console.log(arr[i]);
+        }
+    </script>
+    ```
+* 数组的长度：数组名.length,其长度是数组的个数
+    ```html
+    <script>
+        var arr = ["red", "blue", "green", "black"]
+        for (var i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+    </script>
+    ```
+* 求数组元素的和及平均值
+    ```html
+    <script>
+        var arr1 = [2, 6, 1, 7, 4];
+        var sum = 0;
+        for (var i = 0; i < arr1.length; i++) {
+            sum = sum + arr1[i];
+        }
+        console.log(sum);
+        console.log(sum / arr1.length);
+    </script>
+    ```
+* 求数组最大值/最小值
+    ```html
+    <script>
+        var arr2 = [2, 6, 1, 77, 52, 25, 7, 100];
+        var i = 0;
+        var max = arr2[i];
+        do {
+            if (arr2[i] > max) {
+                max = arr2[i];
+            }
+            i++
+        } while (i < arr2.length)
+        console.log(max);
+
+        var min = arr2[0];
+        for (var i = 1; i < arr2.length; i++) {
+            if (min - arr2[i] >= 0) {
+                min = arr2[i];
+            }
+        }
+        console.log(min);
+    </script>
+    ```
+* 数组转化为分割字符串
+    ```html
+    <script>
+        var arr = ["red", "blue", "green", "black"];
+        var new_arr = '';
+        var sep = '|';
+        for (var i = 0; i < arr.length; i++) {
+            var element = arr[i] + sep;
+            new_arr =  new_arr + element;
+        }
+        console.log(new_arr);
+    </script>
+    ```
+#### 给数组新增元素
+* 新增元素方法：2种
+* 数组中新增元素不能直接给数组赋值，否则会被覆盖
+    ```html
+    <script>
+        //修改长度length新增
+        var arr = ["red", "blue", "green", "black"];
+        arr.length = 6;
+        console.log(arr);
+        console.log(arr[4]);
+        console.log(arr[5]);
+        //修改索引号新增
+        var arr1 = ["red", "blue", "green", "black"];
+        arr1[4] = "pink";
+        console.log(arr1);
+    </script>
+    ```
+* 新建一个数组里面存放1~10的元素
+    ```html
+    <script>
+        var num_arr = [];
+        for (var i = 0; i < 10; i++) {
+            num_arr[i]= i +1;
+
+        }
+        console.log(num_arr);
+    </script>
+    ```
+
+

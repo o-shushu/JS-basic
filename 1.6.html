@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* var arr = [1, 2, 3, 4]
+        console.log(arr[1]);
+        console.log(arr.length);
+        var arr = ["red", "blue", "green", "black"];
+        for (var i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        } */
+//求数组元素的和及平均值
+        /* var arr1 = [2, 6, 1, 7, 4];
+        var sum = 0;
+        for (var i = 0; i < arr1.length; i++) {
+            sum = sum + arr1[i];
+        }
+        console.log(sum);
+        console.log(sum / arr1.length); */
+//求数组最大值/最小值
+        /* var arr2 = [2, 6, 1, 77, 52, 25, 7, 100];
+        var i = 0;
+        var max = arr2[i];
+        do {
+            if (arr2[i] > max) {
+                max = arr2[i];
+            }
+            i++
+        } while (i < arr2.length)
+        console.log(max);
+
+        var min = arr2[0];
+        for (var i = 1; i < arr2.length; i++) {
+            if (min - arr2[i] >= 0) {
+                min = arr2[i];
+            }
+        }
+        console.log(min); */
+//数组转化为分割字符串
+    /* var arr = ["red", "blue", "green", "black"];
+    var new_arr = '';
+    var sep = '|';
+    for (var i = 0; i < arr.length; i++) {
+        var element = arr[i] + sep;
+        new_arr =  new_arr + element;
+    }
+    console.log(new_arr); */
+//数组中新增元素
+    /* var arr = ["red", "blue", "green", "black"];
+    arr.length = 6;
+    console.log(arr);
+    console.log(arr[4]);
+    console.log(arr[5]);
+
+    var arr1 = ["red", "blue", "green", "black"];
+    arr1[4] = "pink";
+    console.log(arr1); */
+//新建一个数组里面存放1~10的元素
+    var num_arr = [];
+    for (var i = 0; i < 10; i++) {
+        num_arr[i]= i +1;
+
+    }
+    console.log(num_arr);
+    </script>
+</body>
+</html>
