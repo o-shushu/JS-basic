@@ -976,6 +976,10 @@
 * 给数组新增元素
     * 新增元素方法(修改长度length;修改索引号)
     * 新建一个数组里面存放1~10的元素
+    * 案例
+        * 选数新建一个数组
+        * 删除指定数组元素
+        * 翻转数组
 * 冒泡排序案例
 #### 为什么要有数组
 * 数组：一组数据的集合,可放任意数据类型，用逗号分隔，里面的数据称为数组元素
@@ -1098,5 +1102,76 @@
         console.log(num_arr);
     </script>
     ```
+* 案例
+    * 选数新建一个数组。还有另一种采用new_arr[new_arr.length]的方法
+    ```html
+        <script>
+            var new_arr = [];
+            var old_arr = [2, 6, 1, 77, 52, 25, 7, 100];
+            for (var i = 0, j = 0; i < old_arr.length; i++) {
+                if (old_arr[i] >= 10) {  
+                    new_arr[j] = old_arr[i];
+                    j++;
+                }
+            }
+            console.log(new_arr); 
+        </script>  
+    ```
+    * 删除指定数组元素
+    ```html
+        <script>
+            var old_arr = [2,0,6,1,77,0,52,0,25,7];
+            var newArr = [];
+            for (var i = 0; i < old_arr.length; i++) {
+                if (old_arr[i] != 0) {  
+                    newArr[newArr.length] = old_arr[i];
+                }
+            }
+            console.log(newArr);
+        </script>  
+    ```
+    * 翻转数组
+    ```html
+        <script>
+            var col_arr = ["red","green","blue","pink","purple"];
+            var turn_arr = [];
+            for (var i = 0; i < col_arr.length; i++) {
+                turn_arr[col_arr.length-1-i] = col_arr[i];
+            }
+            console.log(turn_arr);
+        </script>  
+    ```
+* 冒泡排序：一种算法，将一系列数据按一定顺序排列显示（从大到小或从小到大）
+    * 注意每次是两位数进行比较
+   ```html
+    <script>
+        var arr = [5,4,3,2,1,8,10,9];
+        for (var i = 0; i < arr.length; i++) {  
+            for (var j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                        
+                    }
+                }
+        };
+        console.log(arr);
+    </script>
+    ```
 
 
+### 七.JS函数
+* 为什么需要函数
+    * 概念
+    * 使用
+    * 参数
+如何书写函数
+封装函数
+形参和实参的传递过程
+使用函数的返回值
+arguments获取函数的参数
+* 为什么需要函数
+    * 概念
+    * 使用
+    * 参数
