@@ -1165,13 +1165,153 @@
 * 为什么需要函数
     * 概念
     * 使用
+        * 声明函数
     * 参数
-如何书写函数
-封装函数
-形参和实参的传递过程
-使用函数的返回值
-arguments获取函数的参数
+        * 形参
+        * 实参
+        * 执行过程
+        * 形参和实参个数不匹配
+* 使用函数的返回值
+* arguments获取函数的参数
+    * 案例
 * 为什么需要函数
-    * 概念
+    * 概念：封装一段可以重复执行的代码
+        ```html
+            <script>
+                //求10~50的累加和
+                    /* var sum = 0;
+                    for (sum1 = 10; sum1 <= 50; sum1++) {
+                        sum += sum1;
+                    }
+                    console.log(sum); */
+                    //求50~100,40~80等的累加和,使用JS的函数更高效
+                    function getSum(sum1, sum2) {
+                        var sum = 0;
+                        for (var i = sum1; i <= sum2; i++) {
+                            sum += i;
+                        }
+                        console.log(sum);
+                    }
+                    getSum(1, 100);
+                    getSum(10, 50);
+                    getSum(1, 1000);
+                    getSum(40, 80);
+            </script>
+        ```
     * 使用
-    * 参数
+        * 声明函数
+        ```html
+        <script>
+            function 函数名() {
+                函数体
+            }
+        </script>
+        ```
+        function：关键字，必须小写
+        函数名：一般是动词
+        函数不调用不执行
+        * 调用函数
+            函数名()
+    * 参数：利用函数参数实现函数重复不同的代码
+        * 形参：形式上的参数
+            ```html
+                <script>
+                    function 函数名(形参1，形参2...) {
+                        函数体
+                    }
+                </script>
+            ```
+        * 实参：实际的参数
+            函数名(实参1，实参2...)
+        * 执行过程
+            函数的参数可有可无,形参不用声明
+            ```html
+                <script>
+                    function cook(sub) {
+                        console.log(sub);
+                    }
+                    cook('apple');
+                </script>
+            ```
+        * 形参和实参个数不匹配
+            ```html
+                //形参个数 > 实参个数  ==> 正常计算
+                //形参个数 < 实参个数  ==>  NaN
+            ```
+* 使用函数的返回值
+    不能将结果返回给函数内部，应该返回给函数调用者
+    ```html
+        <script>
+            function 函数名(形参1，形参2...) {
+                return 需要返回的结果
+            }
+
+            function cook(sub) {
+                return sub;
+            }
+            console.log(cook('apple'));
+
+        </script>
+    ```
+    * 案例
+    利用函数求两个数的最大值
+    ```html
+        <script>
+            function getMax(sum1, sum2) {
+                /* if (sum1 > sum2) {
+                    return sum1;
+                } else {
+                    return sum2;
+                } */
+                result = num1 > num2 ? num1 : num2;
+                return result;
+            }
+            console.log(getMax(323, 543));
+       </script>
+    ```
+    //求任意数组的最大值
+    ```html
+        <script>
+            function getArrMax(arr) {
+                var max = arr[0];
+                for(var i = 1; i < arr.length; i++) {
+                    if (arr[i] > max) {
+                        max = arr[i];
+                    }
+                }
+                return max;
+            }
+
+            var result = getArrMax([12, 3, 4, 76, 21, 88]);
+            console.log(result);
+        </script>
+    ```
+    * return终止函数：后面代码不会执行；只能返回1个值且是最后一个值 
+* arguments的使用
+    *  arguments:存储了传递的所有实参；展示为伪数组形式；每个函数都内置好的
+    * 伪数组：不是真正意义上的数组；具有length属性；按照索引方式进行存储；没有真正数组的一些方法pop(),push()
+    ```html
+        <script>
+            function fn() {
+            console.log(arguments);
+            }
+
+            fn(1, 2, 3);
+            
+        </script>
+    ```
+    //利用函数求任意个数的最大值
+    ```html
+        <script>
+            function getMax() {
+                var max = arguments[0];
+                for(var i = 1; i <arguments.length; i++){
+                    if(arguments[i] > max) {
+                        max = arguments[i]
+                    }
+                }
+                return max;
+            }
+            console.log(getMax(43, 23, 5, 67, 33, 45));
+        </script>
+    ```
