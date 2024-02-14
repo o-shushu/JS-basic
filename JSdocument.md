@@ -1174,144 +1174,395 @@
 * 使用函数的返回值
 * arguments获取函数的参数
     * 案例
-* 为什么需要函数
-    * 概念：封装一段可以重复执行的代码
+* 函数的相互调用
+* 函数的声明方式
+#### 为什么需要函数
+* 概念：封装一段可以重复执行的代码
+    ```html
+        <script>
+            //求10~50的累加和
+                /* var sum = 0;
+                for (sum1 = 10; sum1 <= 50; sum1++) {
+                    sum += sum1;
+                }
+                console.log(sum); */
+                //求50~100,40~80等的累加和,使用JS的函数更高效
+                function getSum(sum1, sum2) {
+                    var sum = 0;
+                    for (var i = sum1; i <= sum2; i++) {
+                        sum += i;
+                    }
+                    console.log(sum);
+                }
+                getSum(1, 100);
+                getSum(10, 50);
+                getSum(1, 1000);
+                getSum(40, 80);
+        </script>
+    ```
+* 使用
+    * 声明函数
+    ```html
+    <script>
+        function 函数名() {
+            函数体
+        }
+    </script>
+    ```
+    function：关键字，必须小写
+    函数名：一般是动词
+    函数不调用不执行
+    * 调用函数
+        函数名()
+* 参数：利用函数参数实现函数重复不同的代码
+    * 形参：形式上的参数
         ```html
             <script>
-                //求10~50的累加和
-                    /* var sum = 0;
-                    for (sum1 = 10; sum1 <= 50; sum1++) {
-                        sum += sum1;
-                    }
-                    console.log(sum); */
-                    //求50~100,40~80等的累加和,使用JS的函数更高效
-                    function getSum(sum1, sum2) {
-                        var sum = 0;
-                        for (var i = sum1; i <= sum2; i++) {
-                            sum += i;
-                        }
-                        console.log(sum);
-                    }
-                    getSum(1, 100);
-                    getSum(10, 50);
-                    getSum(1, 1000);
-                    getSum(40, 80);
+                function 函数名(形参1，形参2...) {
+                    函数体
+                }
             </script>
         ```
-    * 使用
-        * 声明函数
+    * 实参：实际的参数
+        函数名(实参1，实参2...)
+    * 执行过程
+        函数的参数可有可无,形参不用声明
+        ```html
+            <script>
+                function cook(sub) {
+                    console.log(sub);
+                }
+                cook('apple');
+            </script>
+        ```
+    * 形参和实参个数不匹配
+        ```html
+            //形参个数 > 实参个数  ==> 正常计算
+            //形参个数 < 实参个数  ==>  NaN
+        ```
+#### 使用函数的返回值
+不能将结果返回给函数内部，应该返回给函数调用者
+```html
+    <script>
+        function 函数名(形参1，形参2...) {
+            return 需要返回的结果
+        }
+
+        function cook(sub) {
+            return sub;
+        }
+        console.log(cook('apple'));
+
+    </script>
+```
+* 案例
+利用函数求两个数的最大值
+```html
+    <script>
+        function getMax(sum1, sum2) {
+            /* if (sum1 > sum2) {
+                return sum1;
+            } else {
+                return sum2;
+            } */
+            result = num1 > num2 ? num1 : num2;
+            return result;
+        }
+        console.log(getMax(323, 543));
+    </script>
+```
+//求任意数组的最大值
+```html
+    <script>
+        function getArrMax(arr) {
+            var max = arr[0];
+            for(var i = 1; i < arr.length; i++) {
+                if (arr[i] > max) {
+                    max = arr[i];
+                }
+            }
+            return max;
+        }
+
+        var result = getArrMax([12, 3, 4, 76, 21, 88]);
+        console.log(result);
+    </script>
+```
+* return终止函数：后面代码不会执行；只能返回1个值且是最后一个值 
+#### arguments的使用
+*  arguments:存储了传递的所有实参；展示为伪数组形式；每个函数都内置好的
+* 伪数组：不是真正意义上的数组；具有length属性；按照索引方式进行存储；没有真正数组的一些方法pop(),push()
+```html
+    <script>
+        function fn() {
+        console.log(arguments);
+        }
+
+        fn(1, 2, 3);
+        
+    </script>
+```
+//利用函数求任意个数的最大值
+```html
+    <script>
+        function getMax() {
+            var max = arguments[0];
+            for(var i = 1; i <arguments.length; i++){
+                if(arguments[i] > max) {
+                    max = arguments[i]
+                }
+            }
+            return max;
+        }
+        console.log(getMax(43, 23, 5, 67, 33, 45));
+    </script>
+```
+//利用函数翻转数组
+```html
+<script>
+    function list(arrList) {
+        for(var i = 0, List = []; i < arrList.length; i++){
+            
+            List[i] = arrList[arrList.length - i -1];
+        }
+        return List;
+    }
+    console.log(list([12, 3, 4, 76, 21, 88]));
+    console.log(list(['red', 'black','white']));
+</script>
+```
+//利用函数进行冒泡排序#&%
+```html
+    <script>
+        function sort(group) {
+            for(var i = 0; i < group.length; i++){
+                for(var j = 0; j < group.length - i - 1; j++){
+                    if(group[j] > group[j + 1]){
+                        var temp = group[j];
+                        group[j] = group[j + 1];
+                        group[j + 1] = temp;
+                    }
+                }
+            }
+            return group;
+        }
+        console.log(sort([12, 3, 4, 76, 21, 88])); 
+    </script>
+```
+//利用函数判断闰年
+```html
+    <script>
+        function yearIs(year){
+            if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+                return year + "是闰年";
+            } else {
+                return year + "不是闰年";
+            }
+        }
+        console.log(yearIs(2000));
+        console.log(yearIs(1999));  
+    </script>
+```
+#### 函数的相互调用
+    ```html
+    <script>
+            function yearIs(year){
+            if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        console.log(yearIs(2000));
+        console.log(yearIs(1999));
+    //用户输入年份，并输出当前年份2月份的天数
+        function backDay(){
+            var year = prompt('请输入年份：');
+            if(yearIs(year)){
+                alert('当前年份是闰年2月份有29天');
+            } else {
+                alert('当前年份是平年2月份有28天');
+            }
+        }
+        backDay();
+    </script>
+    ```
+#### 函数的声明方式
+    ```html
+    <script>
+        //1.命名函数。利用关键字
+        function fn() {
+
+        }
+        fn();
+
+        //2.匿名函数（函数表达式）
+        var 变量名= function(){};
+        var as = function(){
+
+        }
+        as();
+
+        //as是变量名，不是函数值
+        //函数表达式里面存的是函数
+        //函数表达式也可以传递参数
+        
+    </script>
+    ```
+
+### 八.JS作用域
+* 作用域：代码名字在某个范围内起作用和效果。目的是为了提高程序的可靠性，减少命名冲突。
+    * ecma（es）的script标准，用最多es5。在es6时新增块级作用域{},外面是不能使用里面的变量
+* 全局作用域：整个script标签
+* 局部作用域（函数作用域）：只在函数内部起作用
+* 全局变量：在全局作用域下的变量；在函数内部没有直接声明就赋值的变量
+* 局部变量（函数作用域）：只在函数内部起作用;函数的形参
+* 执行效率
+    全局变量只有浏览器关闭时才会销毁，占内存资源。
+    局部变量在代码运行结束后就销毁，不占内存资源。
+* 块级作用域{}
+    在es6时新增块级作用域{},外面是不能使用里面的变量；
+    非es6的块级作用域{}，外面是能使用里面的变量；
+* 作用域链：内部函数访问外部函数的变量，采取链式查找方式来决定采用那个值。即就近原则
+    ```html
+    <script>
+        var num = 10;
+        function fn() {
+            var num = 20;
+            function fun(){
+                console.log(num);
+            }
+            fun();
+        }
+        fn();//20
+    </script>
+    ```
+
+### 九.JS的预解析
+JS引擎运行JS分两步：预解析和代码执行
+* 预解析：将js里的var,function提升到当前作用域的最前面
+    * 变量预解析（变量提升）：将所有变量声明提升到当前作用域的最前面，不提升赋值
+    函数内部的变量不会在外面提升，而是在函数内部提升；
+    * 函数预解析（函数提升）:将所有函数声明提升到当前作用域的最前面，不调用函数
+* 代码执行：按照代码书写顺序从上往下执行
+
+### 十.JS的对象
+* 什么是对象
+    一个具体的事物。在JS中，无序的相关属性和方法的集合，所有的事物都是对象，如：字符串，数值，数组，函数等。
+* 组成
+    * 属性：事物的特征
+
+    * 方法：事物的行为
+* 为什么需要对象：保存对象的完整信息，结构更清晰。
+* 创建对象的三种方式
+    补充说明：()优先级；[]数组的字面量；{}对象的字面量
+    * 字面量创建:采用键值对；逗号隔开
         ```html
         <script>
-            function 函数名() {
-                函数体
+            //语法：var obj = {};
+            //创建对象
+            var obj = {
+            uname: 'zhangsanfeng',
+            age: 18,
+            sex: 'female',
+            say: function() {
+                console.log('hi~');
+            }
+            };
+            //使用对象
+            //(1)
+            console.log(obj.uname);
+            //(2)
+            console.log(obj['age']);
+            //调用对象的方法,()是必要的
+            obj.say();
+        </script>
+        ```
+        * 案例（小狗狗）
+        * 变量和属性
+            * 相同点：都用来存储数据
+            * 不相同点：变量是单独声明并赋值，单独存在，使用时直接写变量名；属性要在对象里，不需声明，使用时必须 对象.属性
+        * 方法和函数
+            * 相同点：都用来实现某种功能
+            * 不相同点：函数是单独声明并调用，单独存在；方法要在对象里，使用时必须 对象.方法()
+   * 利用new Object创建
+        ```html
+        <script>
+        // 利用new Object创建对象
+            var obj = new Object();
+            obj.uname = 'zhangsanfeng';
+            obj.age = 18;
+            obj.sex = 'female';
+            obj.say = function(){
+                console.log('hello!');
+            }
+            //利用等号赋值，以分号结束；调用和上述一样
+            console.log(obj.sex);
+            obj.say()
+        </script>
+        ```
+        * 案例（鸣人）
+    * 利用new Object创建
+        ```html
+            <script>
+            /为什么采用构造函数：上述两种方法一次只能创建一个对象
+                    //之所以叫构造函数是因为里面封装的是对象，且利用函数方法，重复相同代码
+                    //即构造函数就是把对象里面一些相同的属性和方法抽象出来分封装到函数里面
+                    /* function 构造函数名(){
+                        this.属性 = 值;
+                        this.方法 = function(){
+
+                        }
+                    }
+                    new 构造函数名(); */
+
+                    function Star(uname, age, sex){
+                        this.name = uname;
+                        this.age = age;
+                        this.sex = sex;
+                        this.sing = function(sang){
+                            console.log(sang);
+                        }
+                    }
+                    var ldh = new Star('刘德华', 18, '男');//调用函数返回对象
+                    console.log(ldh.name);
+                    console.log(ldh['sex']);
+                    ldh.sing('忘情水');
+
+                    var zxy = new Star('张学友', 18, '男');
+                    console.log(zxy.name);
+                    console.log(zxy['age']);
+                    //构造函数首字母必须大写
+                    //不需要return就返回结果
+                    //调用时，必须使用new
+                    //必须添加this,指向自身 
+            </script>
+        ```
+* 构造函数和对象
+    * 构造函数:泛指某一大类
+    * 对象:特指一个具体事物
+    * 对象的实例化：利用构造函数创建对象的过程
+* new关键字的执行过程
+    * 1.在内存中创建了一个空的对象；
+    * 2.this指向刚才创建的空对象；
+    * 3.执行构造函数里的代码，给空对象添加属性和方法；
+    * 4.返回这个对象（即不需要return）；
+* 遍历对象
+    * for in
+        ```html
+        <script>
+            var obj1 = {
+                uname: 'zhangsanfeng',
+                age: 18,
+                sex: 'female',
+                say: function() {
+                    console.log('hi~');
+                }
+            };
+            //for in遍历对象
+            for(var k in obj) {
+                console.log(k);//得到属性名
+                console.log(obj[k]);//得到属性值
             }
         </script>
         ```
-        function：关键字，必须小写
-        函数名：一般是动词
-        函数不调用不执行
-        * 调用函数
-            函数名()
-    * 参数：利用函数参数实现函数重复不同的代码
-        * 形参：形式上的参数
-            ```html
-                <script>
-                    function 函数名(形参1，形参2...) {
-                        函数体
-                    }
-                </script>
-            ```
-        * 实参：实际的参数
-            函数名(实参1，实参2...)
-        * 执行过程
-            函数的参数可有可无,形参不用声明
-            ```html
-                <script>
-                    function cook(sub) {
-                        console.log(sub);
-                    }
-                    cook('apple');
-                </script>
-            ```
-        * 形参和实参个数不匹配
-            ```html
-                //形参个数 > 实参个数  ==> 正常计算
-                //形参个数 < 实参个数  ==>  NaN
-            ```
-* 使用函数的返回值
-    不能将结果返回给函数内部，应该返回给函数调用者
-    ```html
-        <script>
-            function 函数名(形参1，形参2...) {
-                return 需要返回的结果
-            }
-
-            function cook(sub) {
-                return sub;
-            }
-            console.log(cook('apple'));
-
-        </script>
-    ```
-    * 案例
-    利用函数求两个数的最大值
-    ```html
-        <script>
-            function getMax(sum1, sum2) {
-                /* if (sum1 > sum2) {
-                    return sum1;
-                } else {
-                    return sum2;
-                } */
-                result = num1 > num2 ? num1 : num2;
-                return result;
-            }
-            console.log(getMax(323, 543));
-       </script>
-    ```
-    //求任意数组的最大值
-    ```html
-        <script>
-            function getArrMax(arr) {
-                var max = arr[0];
-                for(var i = 1; i < arr.length; i++) {
-                    if (arr[i] > max) {
-                        max = arr[i];
-                    }
-                }
-                return max;
-            }
-
-            var result = getArrMax([12, 3, 4, 76, 21, 88]);
-            console.log(result);
-        </script>
-    ```
-    * return终止函数：后面代码不会执行；只能返回1个值且是最后一个值 
-* arguments的使用
-    *  arguments:存储了传递的所有实参；展示为伪数组形式；每个函数都内置好的
-    * 伪数组：不是真正意义上的数组；具有length属性；按照索引方式进行存储；没有真正数组的一些方法pop(),push()
-    ```html
-        <script>
-            function fn() {
-            console.log(arguments);
-            }
-
-            fn(1, 2, 3);
-            
-        </script>
-    ```
-    //利用函数求任意个数的最大值
-    ```html
-        <script>
-            function getMax() {
-                var max = arguments[0];
-                for(var i = 1; i <arguments.length; i++){
-                    if(arguments[i] > max) {
-                        max = arguments[i]
-                    }
-                }
-                return max;
-            }
-            console.log(getMax(43, 23, 5, 67, 33, 45));
-        </script>
-    ```

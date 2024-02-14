@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* var num = 10;
+        console.log(num);
+
+        function fn(aru){
+            var num = 20;
+            num2 = 15;
+            console.log(num);
+        }
+        fn();
+        console.log(num2);
+        console.log(aru); */
+//作用域链
+    var num = 10;
+    function fn() {
+        var num = 20;
+        function fun(){
+            console.log(num);
+        }
+        fun();
+    }
+    fn();
+//-----------------------------------
+    function f1() {
+        var num = 123;
+        function f2(){
+            console.log(num);
+        }
+        f2();
+    }
+    var num = 456;
+    f1();//123
+//-----------------------------------
+    var a = 1;
+    function fn1(){
+        var a = 2;
+        var b = '22';
+        fn2();
+        function fn2(){
+            var a = 3;
+            fn3();
+            function fn3(){
+                var a = 4;
+                console.log(a);
+                console.log(b);
+            }
+        }
+    }
+    fn1();
+    </script>
+</body>
+</html>

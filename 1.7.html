@@ -73,11 +73,50 @@
         }
         console.log(getMax(43, 23, 5, 67, 33, 45)); */
 
-        function list(arrList) {
-            for(var i = 0; i <){
-
+//利用函数翻转数组
+        /* function list(arrList) {
+            for(var i = 0, List = []; i < arrList.length; i++){
+                
+                List[i] = arrList[arrList.length - i -1];
+            }
+            return List;
+        }
+        console.log(list([12, 3, 4, 76, 21, 88]));
+        console.log(list(['red', 'black','white'])); */
+//利用函数进行冒泡排序
+    function sort(group) {
+        for(var i = 0; i < group.length; i++){
+            for(var j = 0; j < group.length - i - 1; j++){
+                if(group[j] > group[j + 1]){
+                    var temp = group[j];
+                    group[j] = group[j + 1];
+                    group[j + 1] = temp;
+                }
             }
         }
+        return group;
+    }
+    console.log(sort([12, 3, 4, 76, 21, 88]));
+//利用函数判断闰年
+    function yearIs(year){
+        if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    console.log(yearIs(2000));
+    console.log(yearIs(1999));
+//用户输入年份，并输出当前年份2月份的天数
+    function backDay(){
+        var year = prompt('请输入年份：');
+        if(yearIs(year)){
+            alert('当前年份是闰年2月份有29天');
+        } else {
+            alert('当前年份是平年2月份有28天');
+        }
+    }
+    backDay();
     </script>
 </body>
 </html>
