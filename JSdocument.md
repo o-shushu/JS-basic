@@ -1566,3 +1566,190 @@ JS引擎运行JS分两步：预解析和代码执行
             }
         </script>
         ```
+
+### 十一.JS的内置对象
+* 什么是内置对象
+* 查询指定API的使用方法
+    * 查询文档：MDN；W3C
+        注：参数里带中括号则该参数可有可无
+        查阅方法的功能；
+        查看参数的意义和类型；
+        查看返回值的意义和类型；
+        进行demo测试。
+* Math对象
+* 日期对象
+* 数组对象
+* 字符串对象
+#### 什么是内置对象
+* ECMASScript
+    自定义对象
+    内置对象：JS自带对象，不用关心内部如何实现，直接使用，帮组快速开发
+    浏览器对象（JS独有）
+#### 查询指定API的使用方法
+* 查询文档：MDN；W3C
+    注：参数里带中括号则该参数可有可无
+    查阅方法的功能；
+    查看参数的意义和类型；
+    查看返回值的意义和类型；
+    进行demo测试。
+#### Math对象
+* 非构造函数，无需new来调用
+    * Math.PI
+    * 封装数学对象，含最大小值
+    * Math.abs
+    * Math.floor向下取整，往最小的取值
+    * Math.ceil向上取整，往最大的取值
+    * Math.round四舍五入,负数往大的取
+    * Math.random()返回随机小数，范围[0,1);方法里无参数
+    * 案例
+        * 猜数字:输入1~50之间任意数，只有10次机会
+        ```html
+        <script>
+            var num = prompt('请输入1~50的任意数字:');
+            function getRandom(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            var random = getRandom(1, 50);
+            var temp = [];
+            for (var i = 0; i < 10; i++){
+                if(num == random){
+                    alert('恭喜答对，程序结束');
+                    break;
+                } else if(num > random) {
+                    alert('数字大了，继续猜');
+                } else {
+                    alert('数字小了，继续猜');
+                }
+                temp[i] = num;
+                num = prompt('请输入1~50的任意数字:');
+            }
+            alert('10次回答已用完,下次再来');
+        </script>
+        ```
+#### 日期对象
+* Date()是一个构造函数，必须用new调用
+    ```html
+        <script>
+            var date = new Date();
+            console.log(date);
+        </script>
+    ```
+    * date.getFullYear();
+    * date.getMonth() + 1;//返回月份小1个月
+    * date.getDate();
+    * date.getDay();//周几 周日返回0
+    * date.getHours();
+    * date.getMinutes();
+    * date.getSeconds();
+* Date总的毫秒数（时间戳）
+    ```html
+    <script>
+        var date = new Date();
+        //(1)
+        console.log(date.valueOf());
+        //(2)
+        console.log(date.getTime());
+        //(3)
+        var date1 = +new Date();
+        console.log(date1);
+        //(4)
+        console.log(Date.now());//H5新增 获得总的毫秒数
+    </script>
+    ```
+* 案例
+    * 倒计时效果
+        ```html
+        <script>
+            function cuntDown(time){
+            var nowTime = +new Date();
+            var inputTime = + new Date(time);
+            var times = (inputTime - nowTime) / 1000;//1秒=1000毫秒，获得总的秒数times
+            var d = parseInt(times / 60 / 60 / 24);//parseInt()用于将字符串解析为整数。
+            d = d < '10' ? '0' + d : d ;
+            var h = parseInt(times / 60 / 60 % 24);
+            h = h < '10' ? '0' + h : h ;
+            var m = parseInt(times / 60 % 60);
+            m = m < '10' ? '0' + m : m ;
+            var s = parseInt(times % 60);
+            s = s < '10' ? '0' + s : s ;
+
+            return '倒计时' + d + '天' + h + '时' + m + '分' + s + '秒'
+            }
+            console.log(cuntDown('2024-2-15 18:00:00'));
+        </script>
+        ```       
+#### 数组对象
+* 创建方式
+    * （1）利用new
+    ```html
+    <script>
+        var arr = new Array();
+
+        var arr1 = new Array(2);//2表示数组长度，里面有2个空的数组元素
+        var arr2 = new Array(2, 3);//等价于[2,3],里面有2个数组元素，想放元素就得写2个以上的数
+    </script>
+    ```
+    * （2）数组字面量
+    ```html
+    <script>
+        var arr = [1, 2, 3, 4]
+    </script>
+    ```
+* 检测是否为数组
+    * instanceof
+    * Array.isArray()优先于instanceof，H5新增，ie9以上支持
+        ```html
+        <script>
+            var arr1 = [];
+            var obj = {};
+            console.log(arr1 instanceof Array);
+            console.log(obj instanceof Array);
+
+            console.log(Array.isArray(arr1));
+            console.log(Array.isArray(obj));
+        </script>
+        ```
+* 添加/删除数组元素
+    * push():数组末尾添加1个及以上的元素,有参数
+    * unshift():数组开头添加1个及以上的元素,有参数
+    * pop():删除数组的最后一个元素,没有参数
+    * shift():删除数组的第一个元素,没有参数
+    * 案例
+        * 筛选数组
+            ```html
+            <script>
+                var arr = [1500, 1200, 2000, 2100, 1800];
+                var Arr = [];
+                for(var i = 0; i < arr.length; i++){
+                    if (arr[i] < 2000){
+                        Arr.push(arr[i]);    
+                    }
+                }
+                console.log(Arr);
+            </script>
+            ```
+        * 翻转数组
+            ```html
+            <script>
+                var arr = [1500, 1200, 2000, 2100, 1800];
+                arr.reverse();//重点
+                console.log(arr);
+            </script>
+            ```
+        * 数组的冒泡排序
+            ```html
+            <script>
+                var arr = [1500, 1200, 2000, 2100, 1800];
+                arr.sort();//重点
+                console.log(arr);
+
+                var arr1 = [13, 4, 77, 1, 7];
+                arr1.sort();
+                console.log(arr1);// [1, 13, 4, 7, 77]结果并非期望那样
+
+                arr1.sort(function(a, b) {
+                    return a - b;//升序排列；若b -a则为降序排列
+                });
+                console.log(arr1);
+            </script>
+            ```

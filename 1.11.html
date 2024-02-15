@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Math对象
+            /* console.log(Math.PI);
+            console.log(Math.max(1,5,8,2));
+            console.log(Math.max(1,5,8,'hello',10));
+            console.log(Math.max());//-Infinity无穷小 */
+        //封装数学对象，含最大小值，PI
+           /*  var myMath = {
+                PI:3.14,
+                max: function() {
+                    var max = arguments[0];
+                    for(var i = 1; i < arguments.length; i++){
+                        if(arguments[i] > max){
+                            max = arguments[i];
+                        }
+                    }
+                    return max;
+                },
+                min: function() {
+                    var min = arguments[0];
+                    for(var i = 1; i < arguments.length; i++){
+                        if(arguments[i] < min){
+                            min = arguments[i];
+                        }
+                    }
+                    return min;
+                }
+            }
+            console.log(myMath.max(1,5,18,2));
+            console.log(myMath.min(1,5,18,2)); */
+        //绝对值
+           /*  console.log(Math.abs(-5));
+            console.log(Math.abs('-6'));//隐式转换
+            console.log(Math.abs('hello'));//NaN */
+        //三个取整方法
+            //Math.floor向下取整，往最小的取值
+            //Math.ceil向上取整，往最大的取值
+            //Math.round四舍五入,负数往大的取
+            /* console.log(Math.floor(1.1));
+            console.log(Math.floor(1.9));
+            console.log(Math.ceil(1.1));
+            console.log(Math.ceil(1.9));
+            console.log(Math.round(-1.1));
+            console.log(Math.round(-1.5)); */
+
+        //Math.random()返回随机小数，范围[0,1);方法里无参数
+            /* console.log(Math.random());
+            function getRandom(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            var arr = ['A', 'B', 'C', 'D', 'E'];
+            console.log(arr[getRandom(0, arr.length - 1)]); */
+
+        //猜数字
+            /* var input = prompt('请输入1~10的任意数字:');
+            function getRandom(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            while(input != getRandom(1, 10)){
+                if (input > getRandom(1, 10)) {
+                    alert('数字大了，继续猜');
+                } else {
+                    alert('数字小了，继续猜');
+                }
+                input = prompt('请输入1~10的任意数字:');
+            }
+            alert('恭喜答对，程序结束'); */
+
+        //输入1~50之间任意数，只有10次机会
+            /* var num = prompt('请输入1~50的任意数字:');
+            function getRandom(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            var random = getRandom(1, 50);
+            var temp = [];
+            for (var i = 0; i < 10; i++){
+                if(num == random){
+                    alert('恭喜答对，程序结束');
+                    break;
+                } else if(num > random) {
+                    alert('数字大了，继续猜');
+                } else {
+                    alert('数字小了，继续猜');
+                }
+                temp[i] = num;
+                num = prompt('请输入1~50的任意数字:');
+            }
+            alert('10次回答已用完,下次再来'); */
+
+        //Date()是一个构造函数，必须用new调用
+            //无参数，则返回当前系统的时间
+            var date = new Date();
+            console.log(date);
+            //参数，则返回当前系统的时间
+            var date1 = new Date('2020-10-01 08:08:08');
+            console.log(date1 );
+
+            var date2 = new Date();
+            console.log(date2.getFullYear());
+            console.log(date2.getMonth() + 1);//返回月份小1个月
+            console.log(date2.getDate());
+            console.log(date2.getDay());//周几 周日返回0
+            console.log(date2.getHours());
+            console.log(date2.getMinutes());
+            console.log(date2.getSeconds());
+        //封装一个函数返回当前的时分秒
+            function getTime(){
+                var date = new Date();
+                var h = date.getHours();
+                h = h < 10 ? '0' + h : h;
+                var m = date.getMinutes();
+                m = m < 10 ? '0' + m : m;
+                var s = date.getSeconds();
+                s = s < 10 ? '0' + s : s;
+                return h + ':' + m + ':' + s;
+            }
+            console.log(getTime());
+        //Date总的毫秒数（时间戳）
+            var date = new Date();
+            console.log(date.valueOf());
+            console.log(date.getTime());
+            var date1 = +new Date();
+            console.log(date1);
+            console.log(Date.now());//H5新增 获得总的毫秒数
+        //倒计时效果
+            function cuntDown(time){
+                var nowTime = +new Date();
+                var inputTime = + new Date(time);
+                var times = (inputTime - nowTime) / 1000;//1秒=1000毫秒，获得总的秒数times
+                var d = parseInt(times / 60 / 60 / 24);//parseInt()用于将字符串解析为整数。
+                d = d < '10' ? '0' + d : d ;
+                var h = parseInt(times / 60 / 60 % 24);
+                h = h < '10' ? '0' + h : h ;
+                var m = parseInt(times / 60 % 60);
+                m = m < '10' ? '0' + m : m ;
+                var s = parseInt(times % 60);
+                s = s < '10' ? '0' + s : s ;
+
+                return '倒计时' + d + '天' + h + '时' + m + '分' + s + '秒'
+            }
+            console.log(cuntDown('2024-2-15 18:00:00'));
+
+        // 数组对象
+            // 检测是否为数组
+            var arr1 = [];
+            var obj = {};
+            console.log(arr1 instanceof Array);
+            console.log(obj instanceof Array);
+            
+            console.log(Array.isArray(arr1));
+            console.log(Array.isArray(obj));
+        // 添加/删除数组元素
+            //push()在数组末尾添加1个及以上的元素,从后往前。目的给数组追加新元素
+            //push完后返回结果是新数组长度 console.log(arr.push(4,'hi'));//5
+            //原数组会变化
+            var arr = [1,2,3];
+            arr.push(4,'hi');
+            console.log(arr);
+
+            //unshift在数组开头添加1个及以上的元素,从前往后。
+            //原数组会变化
+            arr.unshift('red', 23);
+            console.log(arr);
+
+            //pop()删除数组的最后一个元素，shift()删除数组的第一个元素，没有参数
+            //一次删一个，pop完毕返回的结果是删除的元素
+            console.log(arr.pop());
+            console.log(arr);
+
+            console.log(arr.shift());
+            console.log(arr);
+        //筛选数组
+            var arr = [1500, 1200, 2000, 2100, 1800];
+            var Arr = [];
+            for(var i = 0; i < arr.length; i++){
+                if (arr[i] < 2000){
+                    Arr.push(arr[i]);    
+                }
+            }
+            console.log(Arr);
+        //翻转数组
+            var arr = [1500, 1200, 2000, 2100, 1800];
+            arr.reverse();
+            console.log(arr);
+        //数组的冒泡排序
+            var arr = [1500, 1200, 2000, 2100, 1800];
+            arr.sort();
+            console.log(arr);
+
+            var arr1 = [13, 4, 77, 1, 7];
+            arr1.sort();
+            console.log(arr1);// [1, 13, 4, 7, 77]结果并非期望那样
+
+            arr1.sort(function(a, b) {
+                return a - b;//升序排列；若b -a则为降序排列
+            });
+            console.log(arr1);
+
+    </script>
+</body>
+</html>
