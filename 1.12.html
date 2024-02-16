@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //复杂数据类型传参
+        function Person(name){
+            this.name = name
+        }
+        function f1(x){//x = p 把p的地址给了x
+            console.log(x.name);//liudehua
+            x.name = 'zhangxueyou';
+            console.log(x.name);//zhangxueyou
+        }
+        var p = new Person('liudehua');
+        console.log(p.name);//liudehua
+        f1(p);//zhangxueyou
+        console.log(p.name);//zhangxueyou
+    </script>
+</body>
+</html>

@@ -1600,7 +1600,7 @@ JS引擎运行JS分两步：预解析和代码执行
     * Math.floor向下取整，往最小的取值
     * Math.ceil向上取整，往最大的取值
     * Math.round四舍五入,负数往大的取
-    * Math.random()返回随机小数，范围[0,1);方法里无参数
+    * Math.random()返回随机小数，范围[0,1);方法里可无参数
     * 案例
         * 猜数字:输入1~50之间任意数，只有10次机会
         ```html
@@ -1728,7 +1728,7 @@ JS引擎运行JS分两步：预解析和代码执行
                 console.log(Arr);
             </script>
             ```
-        * 翻转数组
+        * 翻转数组reverse()
             ```html
             <script>
                 var arr = [1500, 1200, 2000, 2100, 1800];
@@ -1736,7 +1736,7 @@ JS引擎运行JS分两步：预解析和代码执行
                 console.log(arr);
             </script>
             ```
-        * 数组的冒泡排序
+        * 数组的冒泡排序sort()
             ```html
             <script>
                 var arr = [1500, 1200, 2000, 2100, 1800];
@@ -1753,3 +1753,278 @@ JS引擎运行JS分两步：预解析和代码执行
                 console.log(arr1);
             </script>
             ```
+        * 返回数组元素的索引号indexOf()
+            * 只返回第一个满足条件的索引号
+            * 若在数组里未找到对于元素则返回-1；
+            * indexOf('red')从前往后
+            * lastIndexOf('red')从后往前
+                ```html
+                    <script>
+                        var arr = ['red','green','pink','white','red','black'];
+                        console.log(arr.indexOf('red'));  
+                    </script>
+                ```
+            * 案例：数组去重
+                ```html
+                    <script>
+                        function unique(arr){
+                            var elements = [];
+                            for (var i = 0;  i< arr.length; i++){
+                                if (elements.indexOf(arr[i]) === -1){
+                                    elements.push(arr[i]);
+                                }
+                            }
+                            return elements;
+                        }
+                        var alone = unique(['c','a','z','a','x','a','x','c','b']);
+                        console.log(alone); 
+                    </script>
+                ```
+        * 数组转换为字符串
+            * toString()
+                ```html
+                    <script>
+                        var arr = [1,2,3];
+                        console.log(arr.toString());
+                    </script>
+                ```
+            * join('分隔符'),返回字符串
+                ```html
+                    <script>
+                        var arr1 = ['red','green','pink'];
+                        console.log(arr1.join());
+                        console.log(arr1.join('-'));
+                    </script>
+                ```
+            * concat():连接多个数组返回新数组，不影响原数组
+                ```html
+                    <script>
+                        var arr1 = ['c','a','z'];
+                        var arr2 = [1,2,3];
+                        var array3 = arr1.concat(arr2);
+                        console.log(array3);
+                    </script>
+                ```
+            * slice():返回截取的新数组，不影响原数组
+                ```html
+                    <script>
+                        var arr = ['red','green','pink','white','black'];
+                        console.log(arr.slice(2,-1)); 
+                    </script>
+                ```
+            * splice():返回删除的元素组成的新数组，会影响原数组
+                ```html
+                    <script>
+                        var months = ['Jan', 'March', 'April', 'June'];
+                        months.splice(1, 0, 'Feb');//第一个数字表位置，第二个数字表替换的元素数
+                        console.log(months);
+                        //console.log(months.splice(1, 0, 'Feb'));//这种写法输出无效
+                        months.splice(4, 1, 'Maybe');
+                        console.log(months);
+                    </script>
+                ```             
+#### 字符串对象
+* 简单数据类型是不存在属性和方法
+* 对象和复杂数据类型才有属性和方法
+* 基本包装类型就是将简单数据类型包装成复杂数据类型
+    ```html
+        <script>
+            var str = 'andy';
+            console.log(str.length);
+            //上述实际变化是---------------
+            var temp = new String('andy');
+            str = temp;
+            temp = null;
+            //字符串的不可变，看上去好像是字符串的内容改变了，实际上是在内存中重新开辟空间存储并指向新空间
+            var str = 'andy';
+            console.log(str);
+            str = 'red';
+            console.log(str);   
+        </script>
+    ```
+* 根据字符串返回位置,可以指定起始位置indexOf()
+    ```html
+    <script>
+        var str = '今天是星期天';
+                console.log(str.indexOf('天'));//1
+                console.log(str.indexOf('天',2));//5 
+    </script>
+    ```
+* 返回字符串中某个元素出现的位置及次数indexOf()
+    ```html
+    <script>
+    var text = 'abcoefoxyozzopp';
+                var start = text.indexOf('o');
+                var num = 0;
+                while(start !== -1){
+                    console.log(start);
+                    num++;
+                    start = text.indexOf('o',start + 1);
+                }
+                console.log(num);
+    </script>
+    ```
+* charAt():根据位置返回字符
+    ```html
+        <script>
+            var str ='word';
+            console.log(str.charAt(2));   
+        </script>
+    ```
+* charCodeAt():返回相应索引号的字符ASCII码
+    ```html
+        <script>
+            var str ='word';
+            console.log(str.charCodeAt(0));   
+        </script>
+    ```
+* str[],H5新增
+    ```html
+        <script>
+            var str ='word';
+            console.log(str[0]);
+        </script>
+    ```
+* 案例
+    * 统计出现最多的字符和次数
+        ```html
+            <script>
+                var text = 'abcoefoxyozzopp';
+                var obj = {};
+                for(var i = 0; i < text.length; i++){
+                    var element = text.charAt(i);
+                    if(obj[element]){
+                        obj[element]++;
+                    }else {
+                        obj[element] = 1;
+                    }
+                }
+                console.log(obj);
+                var max = 0;
+                for(var key in obj){
+                    if(obj[key] > max){
+                        max = obj[key];
+                        ch = key;
+                    }
+                }
+                console.log('出现最多的字符'+ch+'出现次数'+max); 
+            </script>
+        ```
+* 字符串操作方法
+    * concat():连接
+    * substr(位置,截取字数):截取
+    * replace:替换，只能替换第一个字符串
+    * split('分隔符'):字符转换为数组;join('分隔符'):数组转换为字符串
+    * 综合案例
+        ```html
+            <script>
+                var str = 'sky';
+                var text = str.concat('scraper');
+                console.log(text);
+        
+                var result = text.substr(2,2);
+                console.log(result);//ys
+        
+                var rep = result.replace('s', 'y');
+                console.log(rep);
+                var text = rep.concat('scraper');
+                console.log(text);//yyscraper
+              
+                while(text.indexOf('r') !== -1){
+                    text = text.replace('r', '$');
+                }
+                console.log(text);
+               
+                var arr = text.split('$');
+                console.log(arr);
+            </script>
+        ```
+    * toUpperCase()转换为大写
+    * toLowerCase()转换为小写
+
+### 十二.JS简单数据类型和复杂数字据类型
+* 数据类型
+    * 简单数据类型
+    * 复杂数字据类型
+* 堆和栈
+* 内存分配
+* 传参注意事项
+#### 数据类型
+* 简单数据类型
+    简单数据类型（基本数据类型或值类型）：在存储时变量中存储的是值本身，故又叫值类型
+    常用的简单数据类型：string, number, boolean, undefined, null
+* 复杂数字据类型
+    复杂数字据类型（引用数据类型）:变量中存储的仅仅是地址，故又叫引用数据类型。通过new来创建的对象（系统对象，自定义对象）
+    常用的复杂数字据类型：Object,Array,Date
+#### 堆和栈
+    栈(操作系统)：由操作系统自动释放；操作方式类似于数据结构中的栈；简单数据类型存放到栈里
+    堆(操作系统)：由程序员分配释放，若没释放就由垃圾回收机制回收；复杂数据类型存放到堆里
+    注：JS中没有堆栈的概念，上述值为便于理解代码的执行方式
+#### 内存分配
+    简单数据类型：直接在栈里找数据
+    复杂数据类型：先到栈里找地址，再到堆里找数据
+#### 传参注意事项
+    简单数据类型：在栈里是按照值来进行存储的。声明变量便会在栈中开辟空间，放入值，变量指向值。
+    简单类型传参不会相互影响
+    复杂数据类型：会相互影响
+
+### 十三.Web APIs
+* Web APIs和JS基础
+* API(应用程序编程接口)
+* Web API
+* DOM
+    * DOM简介
+    * 获取元素
+    * 事件基础
+    * DOM
+    * DOM
+    * DOM
+#### Web APIs和JS基础
+    ECMAScripy ==> JS基础
+    DOM 和 BOM ==> Web APIs 
+    * JS基础:基本语法
+    * Web APIs:JS的应用
+#### API(应用程序编程接口)
+    给程序员提供的一种工具（接口），使其轻松实现想要完成的功能，会用即可，无需纠结内部如何实现。
+
+#### Web API
+  本质上也是一个接口。由/浏览器/提供的一套/操作浏览器功能/和/页面元素/的API(BOM和DOM)。  
+  主要针对浏览器提供的接口，主要针对浏览器做交互效果
+  一般都有输入和输出（函数的传参和返回值），很多都是方法（函数）
+  可结合内置对象方法的思路学习
+#### DOM
+* DOM简介
+    DOM（文档对象模型）：处理可扩展标记语言(HTML,XML)的标准编程接口，即处理文档/页面的接口。
+    用这些接口可以改变网页的内容，结构和样式。
+    * DOM树：
+        * 文档：一个页面就是一个文档；
+        * 元素：页面中的所有标签；
+        * 节点：所有内容都是节点(标签，属性，文本，注释等).
+        注：DOM把以上都看做对象。
+* 获取元素
+    * 根据ID获取元素
+    * 根据标签名获取
+    * 根据类名获取,H5新增，ie9以上使用
+    * 不管选择器类型
+        * querySelector() 获取第一个元素对象
+        * querySelectorAll() 获取所有元素对象集合
+    * 获取特殊元素
+        * 获取body (document.body)
+        * 获取html (document.documentElement)
+
+* 事件基础
+    * 事件三要素
+        * 事件源（事件被触发的对象）；
+            谁被触发，点击？
+        * 事件类型（如何触发 onclick）;
+            通过什么触发?
+        * 事件处理程序（通过一个函数赋值的方式 完成）
+            要做啥
+
+
+
+
+
+
+
+

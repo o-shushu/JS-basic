@@ -1,0 +1,95 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <div id="time">2024-01-01</div>
+    <ul>
+        <li>Do you want a cup of coffee or milk?</li>
+        <li>Do you want a cup of coffee or milk?</li>
+        <li>Do you want a cup of coffee or milk?</li>
+        <li>Do you want a cup of coffee or milk?</li>
+    </ul>
+    <ol id="ol">
+        <li>Do you want a cup of coffee or milk?</li>
+        <li>Do you want a cup of coffee or milk?</li>
+        <li>Do you want a cup of coffee or milk?</li>
+        <li>Do you want a cup of coffee or milk?</li>
+    </ol>
+    <div class="box">box1</div>
+    <div class="box">box2</div>
+    <div class="box">box3</div>
+    <div class="box">box4</div>
+    <div class="box">box5</div>
+    <div id="nav">
+        <ul>
+            <li id="btn">document</li>
+            <li>document</li>
+        </ul>
+    </div>
+    <script>
+        // 根据ID获取元素
+            var timer = document.getElementById('time');//返回对象
+            console.log(timer);
+            console.log(typeof timer);
+            // console.dir() 打印我们返回的元素对象，更好查看里面的属性和方法
+            console.dir(timer)
+
+        //根据标签名获取
+            //返回的是 所获取元素对象的集合 以伪数组的形式存储
+            //若页面中没有元素，则返回空的伪数组
+            var lis = document.getElementsByTagName('li');
+            console.log(lis);
+            console.log(lis[0]);
+            //依次打印对象，用遍历
+            for (var i = 0; i < lis.length; i++) {
+                console.log(lis[i]);
+                
+            }
+
+            //#获取某个元素内部所有指定标签名的子元素
+            //element（父元素）.getElementsByTagName('标签名');
+            //伪数组不能作为父元素
+            var ol = document.getElementsByTagName('ol');
+            console.log(ol[0].getElementsByTagName('li'));
+            // console.log(ol.getElementsByTagName('li'));//伪数组不能作为父元素
+            var ol = document.getElementById('ol');
+            console.log(ol.getElementsByTagName('li'));
+        //根据类名获取,H5新增，ie9以上使用
+            var boxs = document.getElementsByClassName('box');
+            console.log(boxs);
+
+        //不管选择器类型
+            //querySelector() 获取第一个元素对象
+            var firstBox = document.querySelector('.box');
+            console.log(firstBox);
+
+            var nav = document.querySelector('#nav');
+            console.log(nav);
+
+            var li = document.querySelector('li');
+            console.log(li);
+
+            //querySelectorAll() 获取所有元素对象集合
+            var allBox = document.querySelectorAll('.box');
+            console.log(allBox);
+        
+        //获取特殊元素
+            //获取body document.body
+            console.log(document.body);
+            console.dir(document.body);
+            //获取html ocument.documentElement
+            console.log(document.documentElement);
+        // 事件基础
+        // 事件：触发响应的一种机制
+        //事件三要素：事件源（事件被触发的对象）；事件类型（如何触发 onclick）;事件处理程序（）
+        var btn = document.getElementById('btn');
+            btn.onclick = function(){
+                alert('Do you want a cup of coffee or milk?');
+            }
+    </script>
+ </body>
+ </html>

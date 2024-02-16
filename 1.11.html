@@ -203,7 +203,132 @@
                 return a - b;//升序排列；若b -a则为降序排列
             });
             console.log(arr1);
+        //返回数组元素的索引号
+            //只返回第一个满足条件的索引号
+            //若在数组里未找到对于元素则返回-1；
+            //indexOf('red')从前往后
+            //lastIndexOf('red')从后往前
+            var arr = ['red','green','pink','white','red','black'];
+            console.log(arr.indexOf('red'));
 
+            //数组去重
+            function unique(arr){
+                var elements = [];
+                for (var i = 0;  i< arr.length; i++){
+                    if (elements.indexOf(arr[i]) === -1){
+                        elements.push(arr[i]);
+                    }
+                }
+                return elements;
+            }
+            var alone = unique(['c','a','z','a','x','a','x','c','b']);
+            console.log(alone);
+        //数组转换为字符串
+            //toString()
+            var arr = [1,2,3];
+            console.log(arr.toString());
+            //join('分隔符'),返回字符串
+            var arr1 = ['red','green','pink'];
+            console.log(arr1.join());
+            console.log(arr1.join('-'));
+            //concat()连接多个数组返回新数组，不影响原数组
+            var arr1 = ['c','a','z'];
+            var arr2 = [1,2,3];
+            var array3 = arr1.concat(arr2);
+            console.log(array3);
+            //slice()返回截取的新数组，不影响原数组
+            var arr = ['red','green','pink','white','black'];
+            console.log(arr.slice(2,-1));
+            //splice()返回删除的元素组成的新数组，会影响原数组
+            var months = ['Jan', 'March', 'April', 'June'];
+            months.splice(1, 0, 'Feb');//第一个数字表位置，第二个数字表替换的元素数
+            console.log(months);
+            //console.log(months.splice(1, 0, 'Feb'));//这种写法输出无效
+            months.splice(4, 1, 'Maybe');
+            console.log(months);
+
+        //字符串对象
+            //对象和复杂数据类型才有属性和方法
+            //基本包装类型就是将简单数据类型包装成复杂数据类型
+            var str = 'andy';
+            console.log(str.length);
+            //上述实际变化是---------------
+            var temp = new String('andy');
+            str = temp;
+            temp = null;
+            //字符串的不可变，看上去好像是字符串的内容改变了，实际上是在内存中重新开辟空间存储并指向新空间
+            var str = 'andy';
+            console.log(str);
+            str = 'red';
+            console.log(str);
+            //根据字符串返回位置,可以指定起始位置
+            var str = '今天是星期天';
+            console.log(str.indexOf('天'));//1
+            console.log(str.indexOf('天',2));//5
+            //返回字符串中某个元素出现的位置及次数
+            var text = 'abcoefoxyozzopp';
+            var start = text.indexOf('o');
+            var num = 0;
+            while(start !== -1){
+                console.log(start);
+                num++;
+                start = text.indexOf('o',start + 1);
+            }
+            console.log(num);
+            //根据位置返回字符
+            //charAt()
+            var str ='word';
+            console.log(str.charAt(2));
+            // ASCII码用于判断用户按的哪个键
+            // charCodeAt()返回相应索引号的字符ASCII码
+
+            console.log(str.charCodeAt(0));
+            // str[],H5新增
+            console.log(str[0]);
+            //统计出现最多的字符和次数
+            var text = 'abcoefoxyozzopp';
+            var obj = {};
+            for(var i = 0; i < text.length; i++){
+                var element = text.charAt(i);
+                if(obj[element]){
+                    obj[element]++;
+                }else {
+                    obj[element] = 1;
+                }
+            }
+            console.log(obj);
+            var max = 0;
+            for(var key in obj){
+                if(obj[key] > max){
+                    max = obj[key];
+                    ch = key;
+                }
+            }
+            console.log('出现最多的字符'+ch+'出现次数'+max);
+            //字符串操作方法
+            var str = 'sky';
+            var text = str.concat('scraper');
+            console.log(text);
+            //substr(位置,截取字数)截取
+            var result = text.substr(2,2);
+            console.log(result);//ys
+            //replace替换，只能替换第一个字符串
+            var rep = result.replace('s', 'y');
+            console.log(rep);
+            var text = rep.concat('scraper');
+            console.log(text);//yyscraper
+            //将r替换为$
+            while(text.indexOf('r') !== -1){
+                text = text.replace('r', '$');
+            }
+            console.log(text);
+            //split('分隔符')字符转换为数组，join('分隔符')数组转换为字符串
+            var arr = text.split('$');
+            console.log(arr);
+            //toUpperCase()转换为大写
+            //toLowerCase()转换为小写
+
+            
     </script>
 </body>
 </html>
