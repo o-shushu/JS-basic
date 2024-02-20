@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="QR_code">
+        <img src="resorces\img\QR_code.png" alt="">
+        <i id="close-btn">X</i>
+    </div>
+    <script>
+        var QR = document.getElementById("QR_code");
+        var close_btn = document.getElementById("close-btn");
+
+        close_btn.onclick = function() {
+            QR.style.display = "none";
+        }
+    </script>
+</body>
+</html>

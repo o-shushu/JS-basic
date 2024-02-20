@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: rgb(143, 220, 220);
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <input type="password">
+    <button>change</button>
+    <div></div>
+    <script>
+        var ps = document.querySelector('input');
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        var flag = 0;
+        btn.onclick = function() {
+            
+            if(flag == 0){
+                ps.type = 'text'; 
+                return flag = 1;
+            } else {
+                ps.type = 'password';
+                return flag = 0;
+            }
+        }
+        div.onclick = function() {
+            div.style.backgroundColor = 'red';
+            div.style.width = '300px';
+            div.style.height = '300px';
+        }
+    </script>
+</body>
+</html>

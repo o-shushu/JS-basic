@@ -188,13 +188,13 @@
     * 转为布尔型:1种方式
 * 扩展
 #### 理论概述
-    * 因数据占用（存储空间）不同，为充分利用（存储空间）而划分不同数据类型
-    * JavaScript是一种（弱类型或者说是动态）语言，也是（编程）语言
-    * 变量的数据类型取决于（变量值的数据类型来判断）
-    * 相同的变量可以用作（不同的类型）
-    * JS的数据类型可以分为（2）种，分别是
-        * （简单数据类型）:包含（number）（string）（boolean）（undefined）（null）
-        * （复杂数据类型）:包含（object）
+* 因数据占用（存储空间）不同，为充分利用（存储空间）而划分不同数据类型
+* JavaScript是一种（弱类型或者说是动态）语言，也是（编程）语言
+* 变量的数据类型取决于（变量值的数据类型来判断）
+* 相同的变量可以用作（不同的类型）
+* JS的数据类型可以分为（2）种，分别是
+    * （简单数据类型）:包含（number）（string）（boolean）（undefined）（null）
+    * （复杂数据类型）:包含（object）
 #### 简单数据类型
 ##### 数字型
 * 包含（整型）值和（浮点型）值
@@ -287,7 +287,7 @@
     </script>
 ```  
 ##### 未定义
-* undefined和数字相加，最后的结果是（NaN
+* undefined和数字相加，最后的结果是（NaN）
 ```html
     <script>
         var variable;
@@ -1969,24 +1969,39 @@ JS引擎运行JS分两步：预解析和代码执行
     复杂数据类型：会相互影响
 
 ### 十三.Web APIs
-* Web APIs和JS基础
-* API(应用程序编程接口)
-* Web API
+* JS基础和Web APIs
+    * JS基础:基本语法
+    （）==> JS基础
+    * Web APIs:JS的应用
+    （）==> Web APIs 
+* API()
+    给程序员提供的一种（），使其轻松实现想要完成的功能，（）即可，无需纠结（）实现。
+* Web API   
+    本质上也是一个（）。由（）提供的一套（）和（）的API()。  
+    主要针对浏览器提供的（），对浏览器做（）效果
+    一般都有输入和输出（），很多都是方法（）
+    可结合（）方法的思路学习
 * DOM
     * DOM简介
-    * 获取元素
+        DOM（）：处理可扩展标记语言()的()接口，即处理()的接口。
+        用这些接口可以改变网页的()，()和()。
+        * DOM树：包含（）（）（）。
+    * 获取元素：有（）种方法，分别是哪些？
     * 事件基础
-    * DOM
+        * 事件三要素
+            事件源指（）；事件类型指（）;事件处理程序指（）
+
+
+    * 操作元素
     * DOM
     * DOM
 #### Web APIs和JS基础
-    ECMAScripy ==> JS基础
+* JS基础:基本语法
+    ECMAScript ==> JS基础
+* Web APIs:JS的应用
     DOM 和 BOM ==> Web APIs 
-    * JS基础:基本语法
-    * Web APIs:JS的应用
 #### API(应用程序编程接口)
     给程序员提供的一种工具（接口），使其轻松实现想要完成的功能，会用即可，无需纠结内部如何实现。
-
 #### Web API
   本质上也是一个接口。由/浏览器/提供的一套/操作浏览器功能/和/页面元素/的API(BOM和DOM)。  
   主要针对浏览器提供的接口，主要针对浏览器做交互效果
@@ -2003,15 +2018,86 @@ JS引擎运行JS分两步：预解析和代码执行
         注：DOM把以上都看做对象。
 * 获取元素
     * 根据ID获取元素
+        ```html
+            <script>
+            // 根据ID获取元素
+                var timer = document.getElementById('time');//返回对象
+                console.log(timer);
+                console.log(typeof timer);
+                // console.dir() 打印我们返回的元素对象，更好查看里面的属性和方法
+                console.dir(timer)
+            </script>
+        ```
     * 根据标签名获取
+        ```html
+            <script>
+                //根据标签名获取
+                //返回的是 所获取元素对象的集合 以伪数组的形式存储
+                //若页面中没有元素，则返回空的伪数组
+                var lis = document.getElementsByTagName('li');
+                console.log(lis);
+                console.log(lis[0]);
+                //依次打印对象，用遍历
+                for (var i = 0; i < lis.length; i++) {
+                    console.log(lis[i]);
+                    
+                }
+            </script>
+        ```
+        * 获取某个元素内部所有指定标签名的子元素
+            element（父元素）.getElementsByTagName('标签名');
+            ```html
+                <script>
+                    //伪数组不能作为父元素
+                    var ol = document.getElementsByTagName('ol');
+                    console.log(ol[0].getElementsByTagName('li'));
+                    // console.log(ol.getElementsByTagName('li'));//伪数组不能作为父元素
+                    var ol = document.getElementById('ol');
+                    console.log(ol.getElementsByTagName('li'));
+                </script>
+            ```
     * 根据类名获取,H5新增，ie9以上使用
+        ```html
+            <script>
+                var boxs = document.getElementsByClassName('box');
+                console.log(boxs);
+            </script>
+        ```
     * 不管选择器类型
         * querySelector() 获取第一个元素对象
+            ```html
+                <script>
+                    var firstBox = document.querySelector('.box');
+                    console.log(firstBox);
+
+                    var nav = document.querySelector('#nav');
+                    console.log(nav);
+
+                    var li = document.querySelector('li');
+                    console.log(li);
+                </script>
+            ```
         * querySelectorAll() 获取所有元素对象集合
+            ```html
+                <script>
+                    var allBox = document.querySelectorAll('.box');
+                    console.log(allBox);
+                </script>
+            ```
     * 获取特殊元素
         * 获取body (document.body)
+            ```html
+                <script>
+                    console.log(document.body);
+                    console.dir(document.body);
+                </script>
+            ``
         * 获取html (document.documentElement)
-
+            ```html
+                <script>
+                    console.log(document.documentElement);
+                </script>
+            ``
 * 事件基础
     * 事件三要素
         * 事件源（事件被触发的对象）；
@@ -2020,11 +2106,175 @@ JS引擎运行JS分两步：预解析和代码执行
             通过什么触发?
         * 事件处理程序（通过一个函数赋值的方式 完成）
             要做啥
+        * 案例
+            ```html
+                <script>
+                // 执行事件步骤
+                    //1.获取事件源
+                    var click = document.querySelector('div');
+                    //2.绑定事件 注册事件
+                    //div.onclick
+                    //3.添加事件处理程序
+                    div.onclick = function() {
+                        console.log('on clicked');
+                    }
+                </script>
+            ```
+        * 常见事件类型
+            onclick:鼠标左击触发
+            onmouseover:鼠标经过
+            onmouseout:鼠标离开
+            onfocus:获得鼠标焦点
+            onblur:失去鼠标焦点
+            onmousemove:鼠标移动
+            onmouseup:鼠标弹起触发
+            onmousedown:鼠标按下触发
 
+* 操作元素
+    * 修改元素内容
+        * element.innerText
+            不识别HTML标签，非标准；去除换行和空格
+            ```html
+                <script>
+                // 执行事件步骤
+                    //1.获取元素
+                    var div = document.querySelector('div');
+                    var btn = document.querySelector('button');
+                    //2.绑定事件 注册事件
+                    //btn.onclick
+                    btn.onclick = function() {
+                    //3.1添加事件处理程序
+                        div.innerText = '2020-01-01';
+                    }
 
+                    //3.2不添加事件处理程序
+                    div.innerText = '2020-01-01';
+                </script>
+            ```
+        * element.innerHTML
+            识别HTML标签，w3c推荐；保留换行和空格
+            ```html
+                <script>
+                // 执行事件步骤
+                    //1.获取元素
+                    var div = document.querySelector('div');
+                    //3.2不添加事件处理程序
+                    div.innerText = '<strong>today is<\strong>:2020-01-01';
+                    div.innerHTML = '<strong>today is<\strong>:2020-01-01';
+                </script>
+            ```
+    * 修改元素属性
+        ```html
+            <button id="man">man</button>
+            <button id="woman">woman</button>
+            <img scr="man.jpg" alt="" title="man">
+            <script>
+                var man = document.getElementById('man');
+                var woman = document.getElementById('woman');
+                var img = document.querySelector();
 
+                man.onclick = function(){
+                    img.src = 'woman.jpg';
+                    img.title = 'woman';
+                }
+                woman.onclick = function(){
+                    img.src = 'man.jpg';
+                    img.title = 'man';
+                }
+            </script>
+        ```
+        * 分时显示不同图片与问候语
+            ```html
+                <body>
+                    <img src="#" alt="">
+                    <div>good morning</div>
+                    <script>
+                    // 判断时间,用到系统的内置时间
+                    // 设置不同图片
+                    // 根据时间修改不同图片
+                    // 需要显示不同问候语，修改元素内容
+                    var img = document.querySelector('img');
+                    var div = document.querySelector('div');
+                    var date = new Date();
+                    var h = date.getHours();
+                    if(h < 12) {
+                        img.src = 'morning.jpg';
+                        div.innerHTML = 'good morning';
+                    } else if (h < 18) {
+                        img.src = 'afternoon.jpg';
+                        div.innerHTML = 'good afternoon';
+                    } else {
+                        img.src = 'evening.jpg';
+                        div.innerHTML = 'good evening';
+                    }
+                    
+                    </script>
+                </body>
+            ```       
+    * 表单属性设置
+        ```html
+            <button>button</button>
+            <input type="text" value="input please">
+            <script>
+                var btn = document.querySelector('button');
+                var input = document.querySelector('input');
 
-
-
+                btn.onclick = function(){
+                    //innerHTML用于div等普通盒子
+                    //表单内值通过value改变
+                    input.value = 'inputted';
+                    //点击后按钮被禁用
+                    this.disabled = true;//btn.disabled = true
+                }
+                
+            </script>
+        ```
+        * 查看密码明文案例
+            ```html
+                <input type="password">
+                <button>change</button>
+                <script>
+                    var ps = document.querySelector('input');
+                    var btn = document.querySelector('button');
+                    var flag = 0;
+                    btn.onclick = function() {
+                        
+                        if(flag == 0){
+                            ps.type = 'text'; 
+                            return flag = 1;
+                        } else {
+                            ps.type = 'password';
+                            return flag = 0;
+                        }
+                    }
+                </script>
+            ```
+    * 样式属性操作
+        * element.style:行内样式操作
+            JS的样式权重高于css；JS的样式采用驼峰命名法
+            ```html
+                <style>
+                    div {
+                        background-color: rgb(143, 220, 220);
+                        width: 200px;
+                        height: 200px;
+                    }
+                </style>
+                <body>
+                    <div></div>
+                </body>
+                <script>
+                    var div = document.querySelector('div');
+                    div.onclick = function() {
+                        div.style.backgroundColor = 'red';
+                        div.style.width = '300px';
+                        div.style.height = '300px';
+                    }
+                </script>
+            ```
+        * element.className:类名样式操作
+            display:none 显示
+            display:block 隐藏
+            * 案例-关闭二维码
 
 
