@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="phone">
+    <script>
+        var text = document.querySelector('input');
+        text.onfocus = function() {
+            if(text.value === 'phone'){
+                text.value = '';
+            }
+            text.style.color = '#333';
+        }
+        text.onblur = function() {
+            if(text.value === ''){
+                text.value = 'phone';
+            }
+            text.style.color = '#999';
+        }
+    </script>
+</body>
+</html>
