@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .tab-list {
+            background-color: aquamarine;
+            width: 80%;
+            margin: 10px auto;
+            text-align: center;
+        }
+        .tab-list li {
+            display: inline-block;
+            list-style-type: none;
+            padding: 10px;
+            cursor: pointer;
+            
+        }
+        .current {
+            background-color: red;
+        }
+        .item {
+            display: none;
+        }
+        .item:first-child {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab-list">
+            <li class="current">ambition</li>
+            <li>blossom</li>
+            <li>choir</li>
+            <li>dehydrate</li>
+            <li>equate</li>
+        </div>
+        <div class="tab-cont">
+            <div class="item">Ambition ambition ambition
+                <p>one</p>
+                <img src="resorces/img/true.png" alt="">
+            </div>
+            <div class="item">Blossom blossom blossom</div>
+            <div class="item">Choir choir choir</div>
+            <div class="item">Dehydrate dehydrate dehydrate</div>
+            <div class="item">Equate equate equate</div>
+        </div>
+    </div>
+    <script>
+        var tab_list = document.querySelector('.tab-list').getElementsByTagName('li');
+        var tab_cont = document.querySelector('.tab-cont').getElementsByTagName('div');
+        var items = document.querySelectorAll('.item');
+  
+        for(var i = 0; i < tab_list.length; i++){
+            tab_list[i].setAttribute('index', i);//自定义属性index
+            tab_list[i].onclick = function() {
+                for(var i = 0; i < tab_cont.length; i++){
+                    // tab_cont[j].style.display = "none";
+                    tab_list[i].className = '';
+                }
+                this.className = 'current';
+                // tab_cont[i].style ='display:block';
+
+                //显示内容模块
+                var index = this.getAttribute('index');
+                for(var i = 0; i < items.length; i++){
+                    items[i].style.display = 'none';
+                }
+                    items[index].style.display = 'block';
+            }
+        }
+        
+    </script>
+</body>
+</html>

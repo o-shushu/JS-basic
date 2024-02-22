@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: url("resorces/img/background1.jpg") no-repeat center center fixed;
+            width: 100vw;
+            height: 100vh;
+            background-size: cover;
+        }
+        .default {
+            padding-top: 20px;
+        }
+        li {
+            list-style: none;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            float: right;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="default">
+        <li><img src="resorces/img/background1.jpg" alt=""></li>
+        <li><img src="resorces/img/background2.jpg" alt=""></li>
+        <li><img src="resorces/img/background3.jpg" alt=""></li>
+    </div>
+    <script>
+        // var imgs = document.getElementsByTagName('img');
+        var imgs = document.querySelector('.default').querySelectorAll('img');
+        var div = document.querySelector('div');
+        for(var i = 0; i < imgs.length; i++){
+            imgs[i].onclick = function() {
+                document.body.style.backgroundImage = 'url('+this.src+')';
+            }
+        }
+    </script>
+</body>
+</html>

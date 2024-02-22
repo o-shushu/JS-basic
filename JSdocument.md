@@ -2129,7 +2129,6 @@ JS引擎运行JS分两步：预解析和代码执行
             onmousemove:鼠标移动
             onmouseup:鼠标弹起触发
             onmousedown:鼠标按下触发
-
 * 操作元素
     * 修改元素内容
         * element.innerText
@@ -2283,6 +2282,62 @@ JS引擎运行JS分两步：预解析和代码执行
                     首先判断表单失去焦点onblur；
                     若输入正确则提示正确信息的绿色小图标变化；
                     若输入不是6到16位，则提示错误信息颜色为红色，小图标变化
+    * 元素属性值操作
+        * element.属性:元素本身内置
+        * element.属性 = '值':设置元素属性值
+            ```html
+            <div id="memo"></div>
+            <script>
+                var div = document.querySelector('div');
+                //element.属性:元素本身内置,获取属性值
+                console.log(div.id);
+                // element.属性 = '值':设置元素属性值
+                div.id = 'test';
+            </script>
+            ```
+        * element.getAttribute('属性')：获得自定义属性
+        * element.setAttribute('属性','值')：设置自定义属性
+        * element.removeAttribute('属性')：移除属性
+            ```html
+            <div id="memo" index="1"></div>
+            <script>
+                var div = document.querySelector('div');
+                //element.getAttribute('属性')：获得自定义属性
+                console.log(div.getAttribute('id'));
+                //element.setAttribute('属性','值')：设置自定义属性
+                console.log(div.setAttribute('id','test'));
+                //element.removeAttribute('属性')：移除属性
+                div.removeAttribute('index');
+            </script>
+            ```
+        * H5自定义属性
+            * 目的：保存并使用数据，某些数据可以保存到页面而不保存到数据库中。
+            * 判断自定义属性：以data-开头作为属性名并赋值
+            * dataset：存放了所有以data开头的自定义属性，h5新增，ie11开始支持。
+            ```html
+            <div getTime="20" data-index="2" data-list-name="Tomboy">qw</div>
+            <script>
+                var div = document.querySelector('div');
+                console.log(div.getAttribute('getTime'));
+                div.setAttribute('data-time', 15);
+                console.log(div.getAttribute('data-index'));
+                console.log(div.getTime);//自定义属性的值的获取不能采用元素内置的方法
+                //h5新增，ie11开始支持。dataset是一个存放了所有以data开头的自定义属性
+                console.log(div.dataset);
+                console.log(div.dataset.index);
+                console.log(div.dataset['index']);
+                //若自定义属性名里有多个连接的单词，获取是采用驼峰命名法
+                console.log(div.dataset['listName']);
+            </script>
+            ```
+* 案例
+    * 排他思想
+    * 背景换肤
+    * 表格隔行换色
+    * 表单全选与取消
+    * tab栏页面切换(重要)
+* 节点操作
+### 十四.
 
 
 

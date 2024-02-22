@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, tr, td{
+            border: 2px solid #333;
+            border-collapse: collapse;
+        }
+        .bg {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>分数1</th>
+                <th>分数2</th>
+                <th>分数3</th>
+                <th>分数4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1234</td>
+                <td>234</td>
+                <td>453</td>
+                <td>566</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2345</td>
+                <td>341</td>
+                <td>5456</td>
+                <td>3422</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>545</td>
+                <td>4367</td>
+                <td>876</td>
+                <td>585</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>976</td>
+                <td>547</td>
+                <td>756</td>
+                <td>367</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var trs = document.querySelector('tbody').querySelectorAll('tr');
+        for(var i = 0; i< trs.length; i++){
+            trs[i].onmouseover = function(){
+                this.className = 'bg';
+            }
+            trs[i].onmouseout = function(){
+                this.className = '';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox">序号</th>
+                <th>分数1</th>
+                <th>分数2</th>
+                <th>分数3</th>
+                <th>分数4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox">1</td>
+                <td>1234</td>
+                <td>234</td>
+                <td>453</td>
+                <td>566</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox">2</td>
+                <td>2345</td>
+                <td>341</td>
+                <td>5456</td>
+                <td>3422</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox">3</td>
+                <td>545</td>
+                <td>4367</td>
+                <td>876</td>
+                <td>585</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox">4</td>
+                <td>976</td>
+                <td>547</td>
+                <td>756</td>
+                <td>367</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var checkAll = document.querySelector('thead').querySelector('input');
+        //由标签获取得伪数组
+        var checked = document.querySelector('tbody').getElementsByTagName('input');
+        //单击全选就全部选中
+        checkAll.onclick = function() {
+            for (var i = 0; i < checked.length; i++){
+                checked[i].checked = this.checked;
+            }
+        }
+        //只要有一个没选中，全选就自动取消
+        //第一个for是给所有选项添加绑定事件，第二个for是检查是否所有选项都被勾选
+        for(var i = 0; i < checked.length; i++){
+            checked[i].onclick = function(){
+                var flag = true;
+                for(var i = 0; i < checked.length; i++){
+                    if(!checked[i].checked){
+                        flag = false;
+                        break;//节约资源，只要有一个没选中就跳出循环
+                    }
+                }
+                checkAll.checked = flag;
+            }
+        }
+    </script>
+</body>
+</html>
