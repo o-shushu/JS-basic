@@ -16,12 +16,16 @@
         <i id="close-btn">X</i>
     </div>
     <script>
-        var QR = document.getElementById("QR_code");
+        // var QR = document.getElementById("QR_code");
         var close_btn = document.getElementById("close-btn");
 
         close_btn.onclick = function() {
             QR.style.display = "none";
         }
+        //节点操作
+        // 父节点parentNode,得到的是离元素最近的父级，若找不到则返回为空
+        
+        console.log(close_btn.parentNode);
     </script>
 </body>
 </html>

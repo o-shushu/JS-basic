@@ -90,6 +90,26 @@
             btn.onclick = function(){
                 alert('Do you want a cup of coffee or milk?');
             }
+
+        //节点操作
+        //子节点
+        //(1)子节点childNodes得到所有节点，包含换行等,一般不提倡用
+            var ul = document.querySelector('ul');
+            console.log(ul.childNodes);//获得9个节点
+            
+        //(2)parentNode.children获取所有的子元素节点
+        console.log(ul.children);
+        //子节点属性
+        //firstChild获取第一个子节点，不管节点类型
+        //firstElementChild获取第一个元素子节点
+        console.log(ul.firstChild);
+        console.log(ul.lastChild);
+        console.log(ul.firstElementChild);//ie9以上支持
+        console.log(ul.lastElementChild);//ie9以上支持
+        //(3)实际开发常用，既无兼容性问题又返回第一个子元素
+            console.log(ul.children[0]);
+            console.log(ul.children[3]);
+            console.log(ul.children[ul.children.length - 1]);
     </script>
  </body>
  </html>

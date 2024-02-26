@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        li {
+            list-style-type: none;
+            color: black;
+        }
+        a {
+            text-decoration: none;
+        }
+        .topMenu {
+            display: inline-flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="topMenu">
+        <li>
+            <a href="">fruits</a>
+            <ul>
+                <li>apple</li>
+                <li>banana</li>
+                <li>pear</li>
+            </ul>
+        </li>
+        <li>
+            <a href="">flowers</a>
+            <ul>
+                <li>rose</li>
+                <li>lotus</li>
+                <li>lily</li>
+            </ul>
+        </li>
+        <li>
+            <a href="">cars</a>
+            <ul>
+                <li>toyota</li>
+                <li>BMW</li>
+                <li>VW</li>
+            </ul>
+        </li>
+    </div>
+    <script>
+        var topMenu = document.querySelector('.topMenu');
+        var lis = topMenu.children;
+        for(var i = 0; i < lis.length; i++){
+            lis[i].onmouseover = function(){
+                this.children[1].style.display = 'block';
+            }
+            lis[i].onmouseout = function(){
+                this.children[1].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
