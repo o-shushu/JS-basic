@@ -1481,7 +1481,7 @@ JS引擎运行JS分两步：预解析和代码执行
         * 案例（小狗狗）
         * 变量和属性
             * 相同点：都用来存储数据
-            * 不相同点：变量是单独声明并赋值，单独存在，使用时直接写变量名；属性要在对象里，不需声明，使用时必须 对象.属性
+            * 不相同点：变量是单独声明并赋值，单独存在，使用时直接写变量名；属性要在对象里，不需声明，使用时必须对象.属性
         * 方法和函数
             * 相同点：都用来实现某种功能
             * 不相同点：函数是单独声明并调用，单独存在；方法要在对象里，使用时必须 对象.方法()
@@ -1505,7 +1505,7 @@ JS引擎运行JS分两步：预解析和代码执行
     * 利用new Object创建
         ```html
             <script>
-            /为什么采用构造函数：上述两种方法一次只能创建一个对象
+            //为什么采用构造函数：上述两种方法一次只能创建一个对象
                     //之所以叫构造函数是因为里面封装的是对象，且利用函数方法，重复相同代码
                     //即构造函数就是把对象里面一些相同的属性和方法抽象出来分封装到函数里面
                     /* function 构造函数名(){
@@ -1755,7 +1755,7 @@ JS引擎运行JS分两步：预解析和代码执行
             ```
         * 返回数组元素的索引号indexOf()
             * 只返回第一个满足条件的索引号
-            * 若在数组里未找到对于元素则返回-1；
+            * 若在数组里未找到对应元素则返回-1；
             * indexOf('red')从前往后
             * lastIndexOf('red')从后往前
                 ```html
@@ -1926,7 +1926,7 @@ JS引擎运行JS分两步：预解析和代码执行
                 console.log(result);//ys
         
                 var rep = result.replace('s', 'y');
-                console.log(rep);
+                console.log(rep);//yy
                 var text = rep.concat('scraper');
                 console.log(text);//yyscraper
               
@@ -1993,8 +1993,8 @@ JS引擎运行JS分两步：预解析和代码执行
 
 
     * 操作元素
-    * DOM
-    * DOM
+    * 案例
+    * 节点操作
 #### Web APIs和JS基础
 * JS基础:基本语法
     ECMAScript ==> JS基础
@@ -2327,7 +2327,7 @@ JS引擎运行JS分两步：预解析和代码执行
                 console.log(div.dataset.index);
                 console.log(div.dataset['index']);
                 //若自定义属性名里有多个连接的单词，获取是采用驼峰命名法
-                console.log(div.dataset['listName']);
+                console.log(div.dataset['listName']);//Tomboy
             </script>
             ```
 * 案例
@@ -2353,7 +2353,74 @@ JS引擎运行JS分两步：预解析和代码执行
     注：实际开发中，节点操作主要是元素节点
     * 节点层级
         常见父子兄层级
-        * 父节点 
+        * 父节点:parentNode
+            ```html
+            <div id="QR_code">
+                <img src="resorces\img\QR_code.png" alt="">
+                <i id="close-btn">X</i>
+            </div>
+            <script>
+            var close_btn = document.getElementById("close-btn");
+            // 父节点parentNode,得到的是离元素最近的父级，若找不到则返回为空
+            console.log(close_btn.parentNode);
+            </script>
+            ```
+        * 子节点
+            ```html
+            <body>
+                <ul>
+                    <li>Do you want a cup of coffee or milk?</li>
+                    <li>Do you want a cup of coffee or milk?</li>
+                    <li>Do you want a cup of coffee or milk?</li>
+                    <li>Do you want a cup of coffee or milk?</li>
+                </ul>
+                <ol id="ol">
+                    <li>Do you want a cup of coffee or milk?</li>
+                    <li>Do you want a cup of coffee or milk?</li>
+                    <li>Do you want a cup of coffee or milk?</li>
+                    <li>Do you want a cup of coffee or milk?</li>
+                </ol>
+                <script>
+                    //子节点
+                    //(1)子节点childNodes得到所有节点，包含换行等,一般不提倡用
+                    var ul = document.querySelector('ul');
+                    console.log(ul.childNodes);//获得9个节点
+
+                    //(2)parentNode.children获取所有的子元素节点
+                    console.log(ul.children);
+                    //子节点属性
+                    //firstChild获取第一个子节点，不管节点类型
+                    //firstElementChild获取第一个元素子节点
+                    console.log(ul.firstChild);
+                    console.log(ul.lastChild);
+                    console.log(ul.firstElementChild);//ie9以上支持
+                    console.log(ul.lastElementChild);//ie9以上支持
+                    //(3)实际开发常用，既无兼容性问题又返回第一个子元素
+                    console.log(ul.children[0]);
+                    console.log(ul.children[3]);
+                    console.log(ul.children[ul.children.length - 1]);
+                </script>
+            </body>
+            ```
+        * 兄弟节点 
+            nextSibling:下一个兄弟节点
+            previousSibling:上一个兄弟节点
+            下列h5新增，ie9以上支持
+            nextElementSibling:下一个兄弟元素节点
+            previousElementSibling:上一个兄弟元素节点
+            解决兼容性问题见（兄弟节点.html）
+    * 动态创建节点（动态创建节点.html）
+        * createElement():创建节点
+        * node.appendChild(child):添加节点
+        * node.insertBefore(child,指定插入哪个元素的前面):将元素插入指定元素之前
+        * 点击发布案例.html
+    * 删除节点 (点击发布案例.html)
+        node.removeChild
+        * 每个评论都添加删除功能(点击发布案例.html)
+            javascriptvoid(0):阻止链接跳转 === javascript:;
+    * 复制节点（克隆节点）
+        node.cloneNode():括号里为空或者false则为浅拷贝，只复制节点本身，不含内容；为true就都拷贝
+    * 案例-动态表格生成.html
 ### 十四.
 
 

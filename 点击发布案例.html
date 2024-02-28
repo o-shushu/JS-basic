@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击发布案例</title>
+</head>
+<body>
+    <textarea name="" id="realse" cols="30" rows="10"></textarea>
+    <button>リリース</button>
+    <button id="delete">削除</button>
+    <ul></ul>
+    <script>
+        //点击发布案例解题思路：
+        //创建input,button标签
+        //点击发布button动态创建li，用到onclick函数,createElement
+        //发布后，li的内容改变，用到value
+        var input = document.querySelector('#realse');
+        var btn = document.querySelector('button');
+        var ul = document.querySelector('ul');
+        var del = document.querySelector('#delete');
+        // console.log(input.value == '');
+        // console.log(ul.children.length);
+
+        //文本框有内容时，激活发布按钮
+        if(input.value == ''){
+            btn.disabled = true;
+        }
+        input.onmouseover = function() {
+            if(input.value == ''){
+                btn.disabled = true;
+            }else{
+                btn.disabled = false;
+            }
+        }
+        input.onmouseout = function() {
+            if(input.value == ''){
+                btn.disabled = true;
+            }else{
+                btn.disabled = false;
+            }
+        }
+        //添加节点
+        btn.onclick = function(){
+            var li = document.createElement('li');
+            li.innerHTML = input.value + "<a href='javascript:;'>削除</a>";
+            ul.insertBefore(li,ul.children[0]);
+            del.disabled = false;
+
+            //每个评论都添加删除功能
+            var as = document.querySelectorAll('a');
+            for(var i = 0; i < as.length; i++){
+                as[i].onclick = function(){
+                    ul.removeChild(this.parentNode);
+                }
+            }
+        }
+        //删除节点
+        del.onclick = function(){
+            if(ul.children.length == 0){
+                this.disabled = true;
+            }else{
+                ul.removeChild(ul.children[0]);
+            }
+        }
+    </script>
+</body>
+</html>

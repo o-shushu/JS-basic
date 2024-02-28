@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Sibling</div>
+    <div>skyscraper</div>
+    <span>span span span</span>
+    <script>
+        var skys = document.getElementsByTagName('div');
+        console.log(skys[1].nextSibling);
+        console.log(skys[1].previousSibling);
+        console.log(skys[1].nextElementSibling);
+        console.log(skys[1].previousElementSibling);
+        //封装一个兼容性函数解决兼容性问题
+        function getNextElementSibling(element){
+            while(element.nextSibling){
+                if(element.nodeType === 1){
+                    return element;
+                }
+            }
+            return null;
+        }
+    </script>
+</body>
+</html>

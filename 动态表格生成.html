@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, tr, td {
+            border-collapse: collapse;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>name😊</th>
+            <th>course📚</th>
+            <th>score📝</th>
+            <th>method❌</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var datas = [
+            {
+                name: 'Jane',
+                course: 'math',
+                score: 98,
+            },
+            {
+                name: 'Peppa',
+                course: 'English',
+                score: 95,
+            },
+            {
+                name: 'Ann',
+                course: 'literature',
+                score: 98,
+            },
+            {
+                name: 'George',
+                course: 'physics',
+                score: 90,
+            }
+        ];
+        var tbody = document.querySelector('tbody');
+        for(var i = 0; i < datas.length; i++){//有多少对象就创建多少行
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            for(var k in datas[i]){//有多少个属性就创建多少个列
+                //创建单元格
+                var td = document.createElement('td');
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;">delete</a>';
+            tr.appendChild(td);
+        }
+        var as = document.querySelectorAll('a');
+        for(var i = 0; i < as.length; i++){
+            as[i].onclick = function(){
+                // var a = this.parentNode;
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+</body>
+</html>
