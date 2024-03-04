@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>传统方式</button>
+    <button>addEventListener</button>
+    <button>attachEvent</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        // 1.传统方式
+        btns[0].onclick = function(){
+            alert('button1');
+        }
+        btns[0].onclick = function(){
+            alert('this is button1');
+        }
+        // 2.利用方法监听注册方式
+        btns[1].addEventListener('click', function(){
+            alert(11);
+        })
+        btns[1].addEventListener('click', function(){
+            alert(22);
+        })
+        //3.attachEvent IE9之前使用 (了解即可)
+        btns[2].attachEvent('onclick', function(){
+            alert(33);
+        })
+
+    </script>
+</body>
+</html>
