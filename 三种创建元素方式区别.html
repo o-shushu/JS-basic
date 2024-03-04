@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>click</button>
+    <p>hello</p>
+    <div class="create">
+
+    </div>
+    <script>
+        // 1.  文档流加载完毕，document.write()会导致页面重绘，原先内容清除
+        var element = document.querySelector("button");
+        var add = document.querySelector(".create"); 
+        // element.onclick = function() {
+        //     document.write("<div>world</div>");
+        // }
+
+        // window.onload = function() {
+        //     document.write("<div>world</div>");
+        // }
+        //2.innerHTML
+        // var arr = [];
+        // for(var i = 0; i<=10; i++){
+        //     arr.push('<a href="">monkey</a>');
+        // }
+        // add.innerHTML = arr.join('');
+        // 3.createElement
+        for(var i = 0; i<=10; i++){
+           var a = document.createElement('a');
+           add.appendChild(a);
+        }
+    </script>
+</body>
+</html>

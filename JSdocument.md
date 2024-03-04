@@ -2421,7 +2421,14 @@ JS引擎运行JS分两步：预解析和代码执行
     * 复制节点（克隆节点）
         node.cloneNode():括号里为空或者false则为浅拷贝，只复制节点本身，不含内容；为true就都拷贝
     * 案例-动态表格生成.html
-### 十四.
+    * 三种创建元素方式区别(三种创建元素方式区别.html)
+        * document.write()
+        * innerHTML和createElement
+            不同的浏览器，innerHTM（结构稍微复炸）L在不拼接字符串，采取数组的形式的情况下效率比createElement（结构清晰）高
+
+
+### 十四.事件高级
+
 
 
 
