@@ -2473,10 +2473,40 @@ JS引擎运行JS分两步：预解析和代码执行
         事件对象也有兼容性问题，ie678是通过window.event得到事件对象
     * 兼容性问题
         常通过e || window.event来解决
+    * 事件对象常见的属性和方法（事件对象属性方法.html）
+        * e.target:点击对象返回(标准)
+        this/currentTarget(有兼容性问题，不常用非标准，了解即可)：绑定对象返回
+        * e.type()返回事件类型
+        * 阻止事件默认行为   
+            e.preventDefault() //这是方法
+            e.returnValue//这是属性
+        * 阻止冒泡事件的两种方式（DOM事件流.html）
+            * e.stopPropagation();标准 阻止冒泡
+            * e.cancelBubble = true;//不起作用，只适用低版本浏览器
+    * 事件委托（事件委托.html）
+        事件委托又称事件代理,在JQuery中叫事件委派 
+        在同类型的事件中进行一样的操作时（如警示框弹出），但当有成百上千个同类型元素都需要同样操作时，就需要在每个元素中都添加警示框，这会导致程序繁琐，效率低下，因此使用事件委托，由父元素代理对每个子元素的点击，使用e.target再返回被操作的元素本身。  
 * 利用事件对象完成跟随鼠标案例
 * 封装阻止冒泡的兼容性函数
 * 事件委托的原理
-* 常用的鼠标和键盘事件
+* 常用的鼠标和键盘事件(鼠标和键盘事件.html)
+    * contextmenu :禁用右键菜单
+    * selectstart ：禁止选中文字
+    * 鼠标事件对象
+        e.clientX/clientY ：相对于浏览器窗口的位置
+        e.pageX/pageY ：相对于文档页面的位置,IE9以上支持
+        e.screenX/screenY ：相对于电脑屏幕的位置
+        * 案例
+            图标跟随鼠标.html
+    * 键盘事件对象(键盘事件对象.html)
+        * onkeyup:按键松开时触发
+        * onkeydown：按键按下时触发
+        * onkeypress：按键按下触发，功能键除外
+        注：执行顺序onkeydown > onkeypress > onkeyup,传统用法加on，addEventListener不用加
+        只要有事件就有事件对象
+        keyup,keydown不区分字母大小写，按下a或A都是65.
+        keypress区分字母大小写
+        keyCode得到ASCII码值，可以判断用户按下哪个键。
 
 
 

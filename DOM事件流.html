@@ -37,11 +37,14 @@
         //     alert('father');
         // },true)
         //冒泡阶段
-        son.addEventListener('click',function(){
+        son.addEventListener('click',function(e){
             alert('son');
+            e.stopPropagation();
+           
         },false)
         father.addEventListener('click',function(){
             alert('father');
+            // e.cancelBubble = true;//不起作用，只适用低版本浏览器
         },false)
         document.addEventListener('click',function(){
             alert('document');

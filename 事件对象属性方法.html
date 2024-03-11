@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>a12</li>
+        <li>b23</li>
+        <li>c34</li>
+    </ul>
+    <div>
+        <a href="https://laravel.com/">Laravel</a>
+        <p>Hello Jane</p>
+    </div>
+    <input type="text" value="click">
+    <script>
+        //1.e.target
+         var ul = document.querySelector('ul');
+            ul.addEventListener('click',function(e){
+                // console.log(e.target);//返回点击的事件
+                // console.log(this);//返回绑定事件
+                console.log(e.currentTarget);//返回绑定事件
+
+        })
+
+        //2.解决兼容性问题
+        // ul.onclick = function(e){
+        //     e = e || window.event;
+        //     var target = e.target || e.scrElement;
+        //     console.log(target);
+        // }
+
+        //3.e.type返回事件类型
+            var ipt = document.querySelector('input');
+            // ipt.addEventListener('click',fn);
+            ipt.addEventListener('mouseover',fn);
+            ipt.addEventListener('mouseleave',fn);
+            function fn(e){
+                console.log(e.type);
+            }
+        
+        //4.阻止事件默认行为
+            //常用方式
+            var a = document.querySelector('a');
+            // a.addEventListener('click',function(e){
+            //     e.preventDefault();//方法 标准dom
+            // })
+
+            //传统方式
+            a.onclick = function(e){
+                // e.preventDefault();
+                e.returnValue;//ie678管用
+                // return false;
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <p>Hello Ann</p>
+    <script>
+        //contextmenu
+        document.addEventListener('contextmenu', function(e){
+            e.preventDefault();
+        })
+        //selectstart
+        document.addEventListener('selectstart', function(e){
+            e.preventDefault();
+        })
+        //client
+        document.addEventListener('click', function(e){
+            console.log(e.clientX);
+            console.log(e.clientY);
+            console.log('client---------');
+        })
+        //page
+        document.addEventListener('click', function(e){
+            console.log(e.pageX);
+            console.log(e.pageY);
+            console.log('page---------');
+        })
+        //screen
+        document.addEventListener('click', function(e){
+            console.log(e.screenX);
+            console.log(e.screenY);
+            console.log('screen---------');
+        })
+    </script>
+</body>
+</html>

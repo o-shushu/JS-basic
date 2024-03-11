@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="position" src="./resorces/img/huba.png" alt="" style="position: absolute">
+    <script>
+        //不要忘记给图片使用绝对定位
+        var img = document.querySelector('#position');
+        document.addEventListener('mousemove',fn);
+        function fn(e){
+            var x = e.clientX;
+            var y = e.clientY;
+            img.style.left = x + 'px';
+            img.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
