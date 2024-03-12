@@ -2507,6 +2507,46 @@ JS引擎运行JS分两步：预解析和代码执行
         keyup,keydown不区分字母大小写，按下a或A都是65.
         keypress区分字母大小写
         keyCode得到ASCII码值，可以判断用户按下哪个键。
+        keypress,keydown先触发事件，后落入文字
+        keyup先落入文字，后触发事件
+    * 案例
+        * 按键输入内容.html
+        * 输入内容放大.html
 
+### 十五.BOM浏览器对象模型
+* BOM概述
+    独立于内容而与浏览器窗口进行交互，核心对象是window
+    JavaScript的标准组织是ECMA
+    BOM无标准
+    * BOM与DOM的区别
+        * DOM：
+            文档对象模型；
+            把[文档]当做一个[对象]；
+            主要学习操作页面元素；
+            DOM的标准组织是W3C。
+        * BOM：
+            浏览器对象模型；
+            把[浏览器]当做一个[对象]；
+            顶级对象是window；
+            主要学习浏览器窗口交互；
+            浏览器厂商自定义，兼容性差。
+        BOM>DOM
+        window对象是浏览器的顶级对象，具有双重角色：
+        （1）JS访问浏览器窗口的一个接口；
+        （2）一个全局对象，定义在全局作用域中的变量，函数都会变成window对象的属性和方法。
+        调用时，常会省略window
+        所有变量会自动变为window下的属性
+* 事件
+    * 页面加载事件
+        window.onload = function(){...} 页面全部加载完成后再执行，因此可以放在点击对象的前面,这是传统注册方式，无论写多少个都只执行一次
+        等价于
+        window.addEventListener('load', function(){
+            ...
+        });这个是推荐用法，写多少次都没有限制
+    * 窗口加载事件
+        document.addEventListener('DOMContentLoaded', function(){...});仅当DOM加载完成，就可以触发，不含样式，图片，flash；IE9以上支持
+    * 调整窗口大小事件
+    window.onresize = function(){...}
+    window.addEventListener("resize",function(){...})
 
 
