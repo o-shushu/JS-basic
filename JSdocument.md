@@ -2545,8 +2545,20 @@ JS引擎运行JS分两步：预解析和代码执行
         });这个是推荐用法，写多少次都没有限制
     * 窗口加载事件
         document.addEventListener('DOMContentLoaded', function(){...});仅当DOM加载完成，就可以触发，不含样式，图片，flash；IE9以上支持
-    * 调整窗口大小事件
+    * 调整窗口大小事件（调整窗口大小事件.html）
     window.onresize = function(){...}
-    window.addEventListener("resize",function(){...})
+    window.addEventListener("resize",function(){...})常用于响应式布局
+    window.innerWidth 显示屏幕宽度
+* 定时器(定时器.html)
+    * setTimeout(调用函数，延迟时间[毫秒])
+        window.setTimeout()中window可以省略；
+        调用函数有三种写法；
+        延迟时间省略默认为0，单位毫秒；
+        常给定时器赋予标识符来使用。
+        * 案例：胡巴消失
+    * 停止定时器:clearTimeout()
+    * setInterval()
+        重复调用一个函数，使用很多次。
+        * 案例：倒计时
 
 

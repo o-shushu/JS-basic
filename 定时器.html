@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./resorces/img/huba.png" alt="">
+    <button>stop</button>
+    <div class="Countdown">
+        <div class="hour">1</div>
+        <div class="minute">2</div>
+        <div class="second">3</div>
+    </div>
+    <script>
+
+        //函数调用方法（1）
+            // setTimeout(function(){
+            //     console.log('lated 2s');
+            // },2000)
+
+        //函数调用方法（2）
+        function callback(){
+            console.log('explode');
+        }
+        // setTimeout(callback,2000);
+
+        //函数调用方法（3）
+        function call(){
+            console.log('函数调用方法(3)');
+        }
+        setTimeout('call()', 3000);
+
+        //胡巴5秒后消失
+        var huba = document.querySelector('img');
+        setTimeout(function(){
+            huba.style.display = 'none';
+        },5000);
+
+        //clearTimeout()
+        var btn = document.querySelector('button');
+        var explode = setTimeout(callback, 3000);
+        btn.addEventListener('click', function(){
+            clearTimeout(explode);
+        })
+
+        //setInterval()
+        // setInterval(function(){
+        //     console.log('endless');
+        // },1000);
+
+        //倒计时案例
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+        var inputTime = + new Date('2024-3-19 15:00:00');
+        Countdown();
+        function Countdown(){
+            var nowTime = +new Date;
+            var times = (inputTime - nowTime) / 1000;
+            var h = parseInt(times / 60 / 60 % 24);
+            h = h < '10' ? '0' + h : h ;
+            var m = parseInt(times / 60 % 60);
+            m = m < '10' ? '0' + m : m;
+            var s = parseInt(times % 60);
+            s = s < '10' ? '0' + s : s;
+
+            hour.innerHTML = h;
+            minute.innerHTML = m;
+            second.innerHTML = s;
+        }
+      setInterval(Countdown,1000);
+     
+    </script>
+</body>
+</html>
