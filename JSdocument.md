@@ -2559,6 +2559,34 @@ JS引擎运行JS分两步：预解析和代码执行
     * 停止定时器:clearTimeout()
     * setInterval()
         重复调用一个函数，使用很多次。
-        * 案例：倒计时
+        * 案例：倒计时(定时器.html)
+        * 60秒内发送短信
+    * clearInterval()清除定时器
+* this 最终指向调用者
+    * 全局对象中指向window
+    * JS是单线程，可能造成页面渲染阻塞。
 
-
+    * JS分两类任务
+        * 同步任务：放到主线程执行栈。
+        * 异步任务：放到任务队列（消息队列）。如：回调函数
+        * 顺序：先执行主线程，主线程结束后就会执行异步任务。
+            location相关属性
+            location.herf 获取或设置整个URL#
+            location.host 返回主机（域名）
+            location.port 返回端口，未写返回空字符串
+            location.pathname 返回路径
+            location.search 返回参数#
+            location.hash 返回片段，常用链接锚点
+        * 数据在不同页面间的传递案例
+        location.assign()：跳转页面，也称为重定向页面,可以回退到原来的页面
+        location.replace()：替换当前页面，无法后退页面
+        location.reload()：重新加载页面；若参数为f5则强制刷新ctrl+f5
+* navigator
+    该对象包含有关浏览器的信息，有很多属性，最常用是userAgent ,该属性可以返回由客户机发送服务器的user-agent头部的值
+* history对象
+    与浏览器的历史记录进行交互。该对象包含用户访问过的URL
+    常用方法：
+    back()：后退功能
+    forward()：前进功能
+    go(参数)：前进后退功能，参数1为前进，-1为后退
+* 元素偏移量offset

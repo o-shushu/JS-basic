@@ -13,6 +13,8 @@
         <div class="minute">2</div>
         <div class="second">3</div>
     </div>
+    <button class="send">Send</button>
+    <div class="change"></div>
     <script>
 
         //函数调用方法（1）
@@ -21,57 +23,87 @@
             // },2000)
 
         //函数调用方法（2）
-        function callback(){
-            console.log('explode');
-        }
+            // function callback(){
+            //     console.log('explode');
+            // }
         // setTimeout(callback,2000);
 
         //函数调用方法（3）
-        function call(){
-            console.log('函数调用方法(3)');
-        }
-        setTimeout('call()', 3000);
+            // function call(){
+            //     console.log('函数调用方法(3)');
+            // }
+            // setTimeout('call()', 3000);
 
         //胡巴5秒后消失
-        var huba = document.querySelector('img');
-        setTimeout(function(){
-            huba.style.display = 'none';
-        },5000);
+            // var huba = document.querySelector('img');
+            // setTimeout(function(){
+            //     huba.style.display = 'none';
+            // },5000);
 
         //clearTimeout()
-        var btn = document.querySelector('button');
-        var explode = setTimeout(callback, 3000);
-        btn.addEventListener('click', function(){
-            clearTimeout(explode);
-        })
+            // var btn = document.querySelector('button');
+            // var explode = setTimeout(callback, 3000);
+            // btn.addEventListener('click', function(){
+            //     clearTimeout(explode);
+            // })
 
-        //setInterval()
-        // setInterval(function(){
-        //     console.log('endless');
-        // },1000);
+            //setInterval()
+            // setInterval(function(){
+            //     console.log('endless');
+            // },1000);
 
         //倒计时案例
-        var hour = document.querySelector('.hour');
-        var minute = document.querySelector('.minute');
-        var second = document.querySelector('.second');
-        var inputTime = + new Date('2024-3-19 15:00:00');
-        Countdown();
-        function Countdown(){
-            var nowTime = +new Date;
-            var times = (inputTime - nowTime) / 1000;
-            var h = parseInt(times / 60 / 60 % 24);
-            h = h < '10' ? '0' + h : h ;
-            var m = parseInt(times / 60 % 60);
-            m = m < '10' ? '0' + m : m;
-            var s = parseInt(times % 60);
-            s = s < '10' ? '0' + s : s;
+            // var hour = document.querySelector('.hour');
+            // var minute = document.querySelector('.minute');
+            // var second = document.querySelector('.second');
+            // var inputTime = + new Date('2024-3-19 15:00:00');
+            // Countdown();
+            // function Countdown(){
+            //     var nowTime = +new Date;
+            //     var times = (inputTime - nowTime) / 1000;
+            //     var h = parseInt(times / 60 / 60 % 24);
+            //     h = h < '10' ? '0' + h : h ;
+            //     var m = parseInt(times / 60 % 60);
+            //     m = m < '10' ? '0' + m : m;
+            //     var s = parseInt(times % 60);
+            //     s = s < '10' ? '0' + s : s;
 
-            hour.innerHTML = h;
-            minute.innerHTML = m;
-            second.innerHTML = s;
-        }
-      setInterval(Countdown,1000);
-     
+            //     hour.innerHTML = h;
+            //     minute.innerHTML = m;
+            //     second.innerHTML = s;
+            // }
+            // setInterval(Countdown,1000);
+
+        //60秒内发送短信
+            // var send = document.querySelector('.send');
+            // var times = 5;
+
+            // send.addEventListener('click', function(){
+            // this.disabled = true;
+            // var timer = setInterval(function(){
+            //     if (times < 0){
+            //         send.innerHTML = 'Send';
+            //         send.disabled = false;
+            //         clearInterval(timer);
+            //         times = 5;
+            //     }else{
+            //         send.innerHTML = '残る：' + times;
+            //         times--;
+            //     }
+            // }, 1000);
+            // })
+        //5秒后跳转
+        var timer = 5;
+        var change = document.querySelector('.change');
+        setInterval(function(){
+            if(timer < 0){
+                location.href = 'https://www.bilibili.com/';
+            }else {
+                change.innerHTML = 'Page will be changed on ' + timer + ' s later.';
+                timer--;
+            }
+        },1000)
+
     </script>
 </body>
 </html>
