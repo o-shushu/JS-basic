@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .father {
+            position: relative;
+            background-color: aqua;
+            width: 150px;
+            height: 150px;
+            margin: 50px;
+        }
+        .son {
+            background-color: pink;
+            width: 75px;
+            height: 75px;
+            margin: 25px;
+        }
+        .w {
+            background-color: brown;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 50px;
+            padding: 10px;
+            border: 1px solid blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">
+
+        </div>
+    </div>
+    <div class="w">
+
+    </div>
+    <script>
+        var fbox = document.querySelector('.father');
+        var sbox = document.querySelector('.son');
+        var w = document.querySelector('.w');
+        //1返回位置
+        console.log(fbox.offsetTop);
+        console.log(fbox.offsetLeft);
+        console.log(sbox.offsetLeft);
+        //2返回大小，此处padding和边框都会将元素大小改变
+        console.log(w.offsetWidth);
+        console.log(w.offsetHeight);
+        //3返回带有定位（position）的父亲，否则返回body
+        console.log(sbox.offsetParent); //.father含有position
+        console.log(sbox.parentNode);//返回父级，与是否定位无关
+    </script>
+</body>
+</html>

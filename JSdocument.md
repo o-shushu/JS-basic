@@ -2590,3 +2590,20 @@ JS引擎运行JS分两步：预解析和代码执行
     forward()：前进功能
     go(参数)：前进后退功能，参数1为前进，-1为后退
 * 元素偏移量offset
+    * 作用：获取元素距离父元素的位置；
+        获得元素自身的大小（宽高）；
+        注返回值不带单位
+        offsetParent:返回元素的带有相对定位的父级位置，若没有父级则返回body
+        offsetTop：返回元素的上方偏移
+        offsetLeft：返回元素的左边框偏移
+        offsetWidth：返回元素的包括padding,边框，内容区宽度的偏移，只能获取不能赋值
+        offsetHeight：返回元素的包括padding,边框，内容区宽度的偏移
+    * 与style的区别
+        style：
+        只能获得行内样式中的样式值；
+        获得的是字符串；
+        style.width不包含padding，border；
+        可读写，即可以获取又可以赋值；
+    * 案例
+        * offset.html
+        * 模态框制作.html
